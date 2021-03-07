@@ -1,0 +1,128 @@
+/*				header				*/
+
+header {
+    position: sticky;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+
+    background-color: #c49061;
+
+    width: 100vw;
+    height: 15vh;
+}
+
+/*				main page logotype				*/
+
+#logotype {
+    display: inline-flex;
+    
+    margin: 4vw;
+}
+
+/*				manu and nav				*/
+
+.header-menu {
+	display: inline-flex;
+}
+
+.header-menu-list {
+	display: inline-flex;
+	align-items: center;
+	list-style: none;
+
+	margin-right: 2vw;
+}
+
+.header-menu-list li .link {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-size: 175%;
+	text-decoration: none;
+    
+	text-shadow: white .1vw .125vh 0;
+
+	margin: 0 2.5vw 0 0;
+
+    position: relative;
+}
+
+.header-menu-list li .link:hover {
+	/*color: #e2c8af;*/
+    color: #593a2e;
+    text-shadow: white .2vw .25vh 0;
+}
+
+/*				bell button				*/
+
+.header-menu-list li .link#bell-button-in-header img {
+    height: 8vh;
+    width: 8vh;
+
+    transform: rotate(0deg);
+}
+
+.header-menu-list li .link#bell-button-in-header img:hover {
+    height: 8vh;
+    width: 8vh;
+
+    animation: ring-a-bell 1s;
+}
+
+.header-menu-list li .link.begin#bell-button-in-header img {
+    height: 8vh;
+    width: 8vh;
+
+    animation: ring-a-bell 1s;
+}
+
+@keyframes ring-a-bell {
+    from {
+        transform: rotate(0deg);
+        animation-timing-function: ease;
+    }
+    25% {
+        transform: rotate(50deg);
+        animation-timing-function: ease;
+    }    
+    50% {
+        transform: rotate(-25deg);
+        animation-timing-function: ease;
+    }    
+    75% {
+        transform: rotate(15deg);
+        animation-timing-function: ease;
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+/*				account button				*/
+
+.header-menu-list li .account-button {
+    color: #593a2e;
+    
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-size: 175%;
+	text-decoration: none;
+
+    background-color: white;
+    border: .2vw solid #593a2e;
+    border-radius: .5vw;
+    
+    text-shadow: white .1vw .125vh 0;
+
+    padding: 0% 5%;
+
+	margin: 0 2.5vw 0 0;
+
+    transition: .4s;
+}
+
+.header-menu-list li .account-button:hover {
+    
+    text-shadow: #e2c8af .2vw .25vh 0;
+
+    /*border: .3vw solid #593a2e;
+    padding: -1vw;*/
+}

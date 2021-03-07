@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShelterHelpService1", "ShelterHelpService1\ShelterHelpService1.csproj", "{C3210E73-0D39-42D8-8822-87C24986AE9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3210E73-0D39-42D8-8822-87C24986AE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3210E73-0D39-42D8-8822-87C24986AE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3210E73-0D39-42D8-8822-87C24986AE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3210E73-0D39-42D8-8822-87C24986AE9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {642019EE-0E99-408A-BD1E-C54508383E53}
+	EndGlobalSection
+EndGlobal

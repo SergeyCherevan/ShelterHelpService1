@@ -1,0 +1,15 @@
+@import 'normalize.css';
+
+@import url(http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic);
+
+/* @import url(https://fonts.googleapis.com/css?family=Quicksand:600&display=swap); */
+
+/* Our styles */
+
+@import 'general-styles.css';
+
+@import 'header.css';
+
+@import 'main-block.css';
+
+@import 'footer.css';

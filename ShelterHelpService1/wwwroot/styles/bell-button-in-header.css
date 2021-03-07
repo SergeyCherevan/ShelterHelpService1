@@ -1,0 +1,23 @@
+.header-menu-list li .link#bell-button-in-header img {
+    height: 8vh;
+    width: 8vh;
+
+    transform: rotate(0deg);
+}
+
+.header-menu-list li .link#bell-button-in-header img:hover {
+    height: 8vh;
+    width: 8vh;
+
+    animation: ring-a-bell .5s;
+}
+
+@keyframes ring-a-bell {
+    from {
+        transform: rotate(45deg);
+        animation-timing-function: ease;
+    }
+    to {
+        transform: rotate(-45deg);
+    }
+}

@@ -1,0 +1,43 @@
+/*				general-styles				*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Ubuntu', sans-serif;
+
+	font-size: calc(15/1024 * 100vw); /*20px 1.45vw*/
+}
+
+/*				logotype styles				*/
+
+.logo {
+	font-size: 300%;
+	font-family: 'Quicksand', sans-serif;
+	text-decoration: none;
+	color: #593a2e;
+
+	text-shadow: white .2vw .25vh 0;
+
+	transition: .3s;
+}
+
+.logo:hover {
+	cursor: pointer;
+
+	text-shadow: white .4vw .5vh 0;
+}
+
+/*				links				*/
+
+.link {
+	color: #593a2e;
+	transition: .3s;
+
+	text-align: center;
+
+	cursor: pointer;
+}
+
+.link:hover {
+	color: #a06b3b;
+}
