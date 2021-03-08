@@ -1,12 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Kind hands</title>
+    @await Html.PartialAsync("MetatagsPartial");
 
-    <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    @await Html.PartialAsync("CssPartial");
 </head>
 
 <body>
@@ -38,9 +35,10 @@
     </main>
 
     <footer>
+        @RenderBody();
     </footer>
 
-    <script src="scripts/script.js"></script>
+    @await Html.PartialAsync("ScriptsPartial2");
 
 </body>
 </html>

@@ -1,8 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\MetatagsPartial.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
@@ -11,6 +15,10 @@
     <Folder Include="Domain\" />
     <Folder Include="Models\ViewComponents\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\MetatagsPartial.cshtml" />
   </ItemGroup>
 
 </Project>
