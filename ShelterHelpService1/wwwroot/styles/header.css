@@ -46,11 +46,11 @@ header {
     position: relative;
 }
 
-.header-menu-list li .link:hover {
-	/*color: #e2c8af;*/
-    color: #593a2e;
-    text-shadow: white .2vw .25vh 0;
-}
+    .header-menu-list li .link:hover {
+	    /*color: #e2c8af;*/
+        color: #593a2e;
+        text-shadow: white .2vw .25vh 0;
+    }
 
 /*				bell button				*/
 
@@ -99,7 +99,7 @@ header {
 
 /*				account button				*/
 
-.header-menu-list li .account-button {
+.account-button {
     color: #593a2e;
     
     font-family: "Comic Sans MS", "Comic Sans", cursive;
@@ -114,15 +114,13 @@ header {
 
     padding: 0% 5%;
 
-	margin: 0 2.5vw 0 0;
-
     transition: .4s;
 }
 
-.header-menu-list li .account-button:hover {
-    
+.account-button:hover {    
     text-shadow: #e2c8af .2vw .25vh 0;
+}
 
-    /*border: .3vw solid #593a2e;
-    padding: -1vw;*/
+.header-menu-list li .account-button {
+	margin: 0 2.5vw 0 0;
 }

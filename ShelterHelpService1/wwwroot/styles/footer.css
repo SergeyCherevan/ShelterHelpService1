@@ -1,5 +1,10 @@
 footer {
-    height: 15vh;
+    min-height: 15vh;
+    width: 100vw;
+
+    display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
 
     margin: 0;
     padding: 0;
@@ -7,3 +12,65 @@ footer {
 
     background-color: #a06b3b;
 }
+
+    footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
+        color: #593a2e;
+
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+	    text-decoration: none;
+
+        text-shadow: white .1vw .125vh 0;
+
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+.footer-menu {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#our-offices {
+    margin: 0 0 0 2.5vw;
+}
+
+.footer-menu-list {
+    color: #593a2e;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    text-decoration: none;
+
+    text-shadow: white .05vw .125vh 0;
+
+    margin-right: 2vw;
+}
+
+    .footer-menu-list li {
+        align-items: center;
+    }
+
+.link-icon {
+    height: 3.5vh;
+    width: 4vh;
+
+    margin: 0 1vh 0 0;
+
+    transition: .3s;
+}
+.link-icon:hover {
+    height: 3.5vh;
+    width: 4vh;
+
+    margin: 0 0 0 1vh;
+}
+
+#logo-in-footer {
+    font-size: 200%;
+    margin: 0 2.5vw 0 0;
+    text-shadow: white .1vw .125vh 0;
+}
+
+    #logo-in-footer:hover {
+        text-shadow: white .2vw .25vh 0;
+    }
