@@ -1,5 +1,9 @@
 footer {
-    height: 50vh;
+    height: 15vh;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
 
     background-color: #a06b3b;
 }

@@ -5,20 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\MetatagsPartial.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Domain\" />
     <Folder Include="Models\ViewComponents\" />
     <Folder Include="Service\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Shared\MetatagsPartial.cshtml" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
 </Project>

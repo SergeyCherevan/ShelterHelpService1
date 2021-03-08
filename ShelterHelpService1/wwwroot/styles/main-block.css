@@ -1,9 +1,12 @@
 main {
     height: 70vh;
+    display: inline-flex;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
 
     background-color: white;
-
-	display: inline-flex;
 }
 
 .main-left-column {
