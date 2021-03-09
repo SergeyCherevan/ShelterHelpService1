@@ -52,22 +52,20 @@ footer {
     }
 
         .footer-menu-list li::before {
-            content: '•';
+            content: '\25cf';
             text-shadow: white .1vw .125vh 0;
+            font-family: "Consolas";
         }
 
 .link-icon {
-    height: 3.5vh;
-    width: 4vh;
-
+    height: min(3.5vh, 2vw);
+    width: min(4vh, 2.4vw);
+    
     margin: 0 1vh 0 0;
 
     transition: .3s;
 }
 .link-icon:hover {
-    height: 3.5vh;
-    width: 4vh;
-
     margin: 0 0 0 1vh;
 }
 

@@ -9,7 +9,7 @@ header {
     background-color: #c49061;
 
     width: 100vw;
-    height: 15vh;
+    height: 20vh;
 }
 
 /*				main page logotype				*/
@@ -55,23 +55,17 @@ header {
 /*				bell button				*/
 
 .header-menu-list li .link#bell-button-in-header img {
-    height: 8vh;
-    width: 8vh;
+    height: min(10vh, 7.5vw);
+    width: min(10vh, 7.5vw);
 
     transform: rotate(0deg);
 }
 
 .header-menu-list li .link#bell-button-in-header img:hover {
-    height: 8vh;
-    width: 8vh;
-
     animation: ring-a-bell 1s;
 }
 
 .header-menu-list li .link.begin#bell-button-in-header img {
-    height: 8vh;
-    width: 8vh;
-
     animation: ring-a-bell 1s;
 }
 

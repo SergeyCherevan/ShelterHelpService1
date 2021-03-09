@@ -1,0 +1,62 @@
+﻿#left-menu .link {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 125%;
+    text-decoration: none;
+
+    text-shadow: white .1vw .125vh 0;
+}
+
+#left-menu {
+    margin-top: 2vh;
+}
+
+#left-menu div {
+    display: inline-flex;
+    align-items: center;
+
+    margin: 1vh 0 0 .5vw;
+}
+
+    #left-menu div a {
+        display: inline-flex;
+        align-items: center;
+    }
+
+        #left-menu a .link-icon {
+            height: min(9vh, 6vw);
+            width: min(9vh, 6vw);
+
+            position: relative;
+
+            margin: 0 1vw 0 0;
+        }
+
+            #left-menu a:hover .link-icon {
+                animation: vibration 1s;
+            }
+
+@keyframes vibration {
+    from {
+        transform: translateY(0vh);
+        animation-timing-function: ease;
+    }
+
+    25% {
+        transform: translateY(-1vh);
+        animation-timing-function: ease;
+    }
+
+    50% {
+        transform: translateY(0.5vh);
+        animation-timing-function: ease;
+    }
+
+    75% {
+        transform: translateY(-0.3vh);
+        animation-timing-function: ease;
+    }
+
+    to {
+        transform: translateY(0vh);
+    }
+}

@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using React.AspNet;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using JavaScriptEngineSwitcher.ChakraCore;
 
 namespace ShelterHelpService1
 {
@@ -20,6 +23,12 @@ namespace ShelterHelpService1
             services.AddControllersWithViews().
                 SetCompatibilityVersion(CompatibilityVersion.Version_3_0).
                 AddSessionStateTempDataProvider();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+
+            services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName)
+                .AddChakraCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,6 +38,8 @@ namespace ShelterHelpService1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseReact(config => { });
 
             app.UseRouting();
 
