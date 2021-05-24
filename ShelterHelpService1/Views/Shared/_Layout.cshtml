@@ -1,46 +1,40 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-    @await Html.PartialAsync("MetatagsPartial")
+    <!-- Metatags -->
+    <partial name="MetatagsPartial" />
 
-    @await Html.PartialAsync("CssPartial")
+    <!-- Links -->
+    <partial name="LinksPartial" />
+
+    <!-- ReactJS -->
+    <partial name="ReactScriptsImport" />
 </head>
 
 <body>
 
-    @await Html.PartialAsync("ReactScriptsImport")
-
-    <header>
-        <a class="logo" id="logotype" href="#">Kind hands</a>
-
-        <div class="header-menu">
-            <ul class="header-menu-list">
-                <li><a class="link" href="#">Наши приюты</a></li>
-                <li>
-                    <a class="link begin" id="bell-button-in-header" href="#" title="Уведомления">
-                        <img src="images/bell1.png" alt="Уведомления">
-                    </a>
-                </li>
-                <li><a class="account-button" href="#">Aккаунт</a></li>
-            </ul>
-        </div>
-    </header>
+    <!-- Header -->
+    <partial name="HeaderPartial" />
 
     <main>
         <div class="main-left-column">
-            <div style="margin: .5vh;">Left column</div>
+            <div style="margin: .5vh;">
+                Left column
+            </div>
         </div>
 
         <div class="main-right-column">
-            <div style="margin: .5vh;">Right column</div>
+            <div style="margin: .5vh;">
+                @RenderBody()
+            </div>
         </div>
     </main>
 
-    <footer>
-        @RenderBody()
-    </footer>
+    <!-- Footer -->
+    <partial name="FooterPartial" />
 
-    @await Html.PartialAsync("ScriptsPartial")
+    <!-- Scripts -->
+    <partial name="ScriptsPartial" />
 
 </body>
 </html>

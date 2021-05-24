@@ -8,7 +8,7 @@ namespace ShelterHelpService1.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Footer()
+        public IActionResult Index()
         {
             return View();
         }

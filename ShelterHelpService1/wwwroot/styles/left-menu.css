@@ -10,32 +10,32 @@
     margin-top: 2vh;
 }
 
-#left-menu div {
-    display: inline-flex;
-    align-items: center;
-
-    margin: 1vh 0 0 .5vw;
-}
-
-    #left-menu div a {
+    #left-menu div {
         display: inline-flex;
         align-items: center;
+
+        margin: 1vh 0 0 .5vw;
     }
 
-        #left-menu a .link-icon {
-            height: min(9vh, 6vw);
-            width: min(9vh, 6vw);
-
-            position: relative;
-
-            margin: 0 1vw 0 0;
+        #left-menu div a {
+            display: inline-flex;
+            align-items: center;
         }
 
-            #left-menu a:hover .link-icon {
-                animation: vibration 1s;
+            #left-menu a .link-icon {
+                height: min(9vh, 6vw);
+                width: min(9vh, 6vw);
+
+                position: relative;
+
+                margin: 0 1vw 0 0;
             }
 
-@keyframes vibration {
+                #left-menu a:hover .link-icon {
+                    animation: left-menu-buttons-vibration 1s;
+                }
+
+@keyframes left-menu-buttons-vibration {
     from {
         transform: translateY(0vh);
         animation-timing-function: ease;

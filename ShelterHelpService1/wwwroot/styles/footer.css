@@ -10,7 +10,7 @@ footer {
     padding: 0;
     border: 0;
 
-    background-color: #a06b3b;
+    background-color: #ebc095;
 }
 
     footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, footer p {
@@ -65,8 +65,35 @@ footer {
 
     transition: .3s;
 }
-.link-icon:hover {
-    margin: 0 0 0 1vh;
+
+.footer-menu-list li:hover .link-icon {
+    animation: footer-list-items-vibration 1s;
+}
+
+@keyframes footer-list-items-vibration {
+    from {
+        margin: 0 1vh 0 0;
+        animation-timing-function: ease;
+    }
+
+    25% {
+        margin: 0 0 0 1vh;
+        animation-timing-function: ease;
+    }
+
+    50% {
+        margin: 0 1vh 0 0;
+        animation-timing-function: ease;
+    }
+
+    75% {
+        margin: 0 0 0 .5vh;
+        animation-timing-function: ease;
+    }
+
+    to {
+        margin: 0 1vh 0 0;
+    }
 }
 
 #logo-in-footer {
