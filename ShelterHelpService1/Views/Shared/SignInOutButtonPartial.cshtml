@@ -1,0 +1,8 @@
+﻿@if (ViewBag.IsAuthenticated == true)
+{
+    <a class="interactive-button" href="/Account/Logout" id="account-button">Выйти</a>
+}
+else
+{
+    <a class="interactive-button" href="#" id="account-button">Войти</a>
+}

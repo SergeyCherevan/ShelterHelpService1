@@ -3,7 +3,7 @@
 
 <h1 id="Registration">Регистрация</h1>
 
-<form asp-action="Registration" asp-controller="Account" asp-antiforgery="true" accesskeymethod="Post"
+<form asp-action="Registration" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@ViewBag.returnUrl" accesskeymethod="Post"
       class="registration-form">
 
     <div class="columns">
@@ -30,11 +30,11 @@
             <input asp-for="ConfirmPassword" type="password" required><br>
             <span asp-validation-for="ConfirmPassword"></span><br><br>
 
-            <label asp-for="Email">Публичный Email (виден другим пользователям)</label><br>
-            <input asp-for="Email" type="text" required><br>
-            <span asp-validation-for="Email"></span><br><br>
+            <label asp-for="PublicEmail">Публичный Email (виден другим пользователям)</label><br>
+            <input asp-for="PublicEmail" type="text"><br>
+            <span asp-validation-for="PublicEmail"></span><br><br>
 
-            <button id="submit" type="submit" class="interactive-button">Зарегистрироваться</button><br><br>
+            <button id="registration-submit" type="submit" class="interactive-button">Зарегистрироваться</button><br><br>
 
             <a id="already-registred" class="link" href="#Registration">
                 Уже зарегистрированы?

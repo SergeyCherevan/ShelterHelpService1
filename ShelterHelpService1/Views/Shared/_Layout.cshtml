@@ -33,8 +33,11 @@
     <!-- Footer -->
     <partial name="FooterPartial" />
 
-    <!-- Form -->
-    <partial name="LoginFormPartial" />
+    @if (ViewBag.IsAuthenticated != true)
+    {
+        <!-- Form -->
+        <partial name="LoginFormPartial" />
+    }
 
     <!-- Scripts -->
     <partial name="ScriptsPartial" />

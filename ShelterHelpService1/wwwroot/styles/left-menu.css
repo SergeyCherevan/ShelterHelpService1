@@ -13,6 +13,9 @@
 
 #left-menu {
     margin-top: 2vh;
+
+    position: sticky;
+    top: 0;
 }
 
     #left-menu div {

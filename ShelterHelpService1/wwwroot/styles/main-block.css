@@ -10,12 +10,12 @@ main {
 }
 
 .main-left-column {
-    width: 20vw;
+    width: 25vw;
 }
 
 .main-right-column {
     height: 100%;
-    width: 80vw;
+    width: 75vw;
 }
 
 h1 {

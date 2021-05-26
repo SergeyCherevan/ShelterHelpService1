@@ -1,12 +1,12 @@
 ﻿{
     let accountButton = document.getElementById("account-button");
-    accountButton.addEventListener('click', accountButtonClick);
+    accountButton.addEventListener('click', showLoginForm);
 
     let alreadyRegistredButton = document.getElementById("already-registred");
-    alreadyRegistredButton?.addEventListener('click', accountButtonClick);
+    alreadyRegistredButton?.addEventListener('click', showLoginForm);
 }
 
-function accountButtonClick() {
+function showLoginForm() {
 
     let loginForm = document.getElementById("login-form");
 

@@ -11,7 +11,7 @@ namespace ShelterHelpService1.Models.ViewModels
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Не указан Email для регистрации")]
-        [RegularExpression(@"[A-Za-z0-9_]+@[A-Za-z0-9_]+\.[A-Za-z0-9_]+", ErrorMessage = "Некорректный Email")]
+        [RegularExpression(@"[A-Za-z0-9_\.]+@[A-Za-z0-9_]+\.[A-Za-z0-9_\.]+", ErrorMessage = "Некорректный Email")]
         [Display(Name = "Введите Email")]
         [UIHint("Email")]
         public string Email { get; set; }
@@ -26,7 +26,7 @@ namespace ShelterHelpService1.Models.ViewModels
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
 
-        [RegularExpression(@"[A-Za-z0-9_]+@[A-Za-z0-9_]+\.[A-Za-z0-9_]+", ErrorMessage = "Некорректный Email")]
+        [RegularExpression(@"[A-Za-z0-9_\.]+@[A-Za-z0-9_]+\.[A-Za-z0-9_\.]+", ErrorMessage = "Некорректный Email")]
         [Display(Name = "Введите публичный Email")]
         [UIHint("PublicEmail")]
         public string PublicEmail { get; set; }

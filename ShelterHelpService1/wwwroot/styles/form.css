@@ -102,6 +102,12 @@
         max-height: 75%;
     }
 
+    .form span {
+        color: #cf0000;
+
+        font-size: 75%;
+    }
+
     .form .one-line {
         display: flex;
         justify-content: space-between;

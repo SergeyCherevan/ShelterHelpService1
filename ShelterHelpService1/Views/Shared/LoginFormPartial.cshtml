@@ -1,7 +1,10 @@
 ﻿
 @using ShelterHelpService1.Settings
 
-<form class="form" id="login-form">
+@model ShelterHelpService1.Models.ViewModels.LoginViewModel
+
+<form asp-action="Login" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@ViewBag.returnUrl" accesskeymethod="Post"
+    class="form" id="login-form">
 
     <div class="form-header">
         <a class="logo" id="logotype-form" href="#">@CompanyInfo.Name</a>
@@ -17,19 +20,19 @@
 
         <div class="right-block">
 
-            <label>Никнейм</label><br>
-            <input name="UserName" type="text" required>
+            <span id="error-span">@(ViewBag.loginFormMessage ?? "")</span>
+            <br>
+
+            <label asp-for="UserName">Никнейм<span>*</span></label><br>
+            <input asp-for="UserName" type="text" required><br>
             <br><br>
 
-            <label>Пароль</label><br>
-            <input name="Password" type="password" required>
-            <br><br>
-
-            <span id="login-error"></span><br>
+            <label asp-for="Password">Пароль<span>*</span></label><br>
+            <input asp-for="Password" type="password" required><br>
             <br><br>
 
             <div class="one-line">
-                <a type="submit" class="interactive-button" id="submit-button" href="#">Войти</a>
+                <button id="login-submit" type="submit" class="interactive-button">Войти</button>
                 <a class="link" asp-controller="Account" asp-action="Registration">Регистрация</a>
             </div>
 
