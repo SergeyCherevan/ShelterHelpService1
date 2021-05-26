@@ -1,0 +1,118 @@
+﻿.form {
+    display: none;
+
+    position: fixed;
+    overflow: hidden;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 60vw;
+    max-height: 80vh;
+
+    z-index: 2;
+
+    background: #fff;
+    border: .2vw solid #593a2e;
+    border-radius: .5vw;
+    box-shadow: rgba(141, 115, 89, .5) .4vw .6vh;
+}
+
+    .form.unvisible {
+        display: block;
+
+        opacity: 0;
+    }
+
+    .form.visible {
+        display: block;
+
+        opacity: 1;
+    }
+
+    .form .form-header {
+        display: flex;
+
+        padding: 1vw 1vw 0 1vw;
+
+        align-items: center;
+    }
+
+    .form .logo {
+        text-shadow: #c49061 .2vw .25vh 0;
+    }
+
+        .form .logo:hover {
+            text-shadow: #c49061 .4vw .5vh 0;
+        }
+
+    .form .exit {
+        text-decoration: none;
+
+        vertical-align: middle;
+
+        color: #593a2e;
+        text-shadow: #c49061 .2vw .25vh 0;
+        font-size: 200%;
+
+	    transition: .3s;
+    }
+
+        .form .exit:hover {
+            text-shadow: #c49061 .4vw .5vh 0;
+        }
+
+    .form #exit-login-form {
+        position: fixed;
+
+        right: 3.5vw;
+        top: 2vw;
+    }
+
+
+
+    .form .columns {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+    .form .left-block {
+        width: 50%;
+        height: 100%;
+
+        display: inline-block; 
+
+        padding: 1vw;
+    }
+
+    .form .right-block {
+        width: 50%;
+        height: 100%;
+
+        display: inline-block; 
+
+        padding: 1vw 2vw 1vw 1vw;
+    }
+
+    .form .img-on-form {
+        max-width: 100%;
+        max-height: 75%;
+    }
+
+    .form .one-line {
+        display: flex;
+        justify-content: space-between;
+
+        align-items: center;
+    }
+
+    .form .interactive-button {
+        font-size: 150%;
+    }
+
+    .form .link {
+        text-decoration: underline;
+    }

@@ -10,8 +10,14 @@
 
 @import 'header.css';
 
+@import 'interactive-button.css';
+
 @import 'main-block.css';
 
 @import 'left-menu.css';
 
 @import 'footer.css';
+
+@import 'form.css';
+
+@import 'registration-form.css';

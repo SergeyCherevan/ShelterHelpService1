@@ -1,0 +1,28 @@
+﻿/*				account button				*/
+
+.interactive-button {
+    color: #593a2e;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    text-decoration: none;
+
+    background-color: white;
+    border: .2vw solid #593a2e;
+    border-radius: .5vw;
+
+    text-shadow: white .1vw .125vh 0;
+    box-shadow: #f1d2b4 .2vw .25vh;
+
+    padding: 0% 5%;
+
+    transition: .4s;
+}
+
+    .interactive-button:hover {
+        text-shadow: #e2c8af .2vw .25vh 0;
+        box-shadow: #f1d2b4 .4vw .5vh;
+    }
+
+    .interactive-button:active {
+        background-color: #e2c8af;
+        text-shadow: white .2vw .25vh 0;
+    }

@@ -1,0 +1,40 @@
+﻿
+@using ShelterHelpService1.Settings
+
+<form class="form" id="login-form">
+
+    <div class="form-header">
+        <a class="logo" id="logotype-form" href="#">@CompanyInfo.Name</a>
+
+        <a class="exit" id="exit-login-form" href="#">×</a>
+    </div>
+
+    <div class="columns">
+
+        <div class="left-block">
+            <img src="~/images/dog-on-form.jpg" class="img-on-form" />
+        </div>
+
+        <div class="right-block">
+
+            <label>Никнейм</label><br>
+            <input name="UserName" type="text" required>
+            <br><br>
+
+            <label>Пароль</label><br>
+            <input name="Password" type="password" required>
+            <br><br>
+
+            <span id="login-error"></span><br>
+            <br><br>
+
+            <div class="one-line">
+                <a type="submit" class="interactive-button" id="submit-button" href="#">Войти</a>
+                <a class="link" asp-controller="Account" asp-action="Registration">Регистрация</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

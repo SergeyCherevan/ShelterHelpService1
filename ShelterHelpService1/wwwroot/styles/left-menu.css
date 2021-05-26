@@ -1,4 +1,9 @@
-﻿#left-menu .link {
+﻿
+.main-left-column {
+    background-color: #f1d2b4;
+}
+
+#left-menu .link {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-size: 125%;
     text-decoration: none;

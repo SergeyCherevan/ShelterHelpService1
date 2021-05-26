@@ -1,5 +1,5 @@
 main {
-    height: 70vh;
+    min-height: 70vh;
     display: inline-flex;
 
     margin: 0;
@@ -10,13 +10,16 @@ main {
 }
 
 .main-left-column {
-    height: 100%;
     width: 20vw;
-
-    background-color: #f1d2b4;
 }
 
 .main-right-column {
     height: 100%;
     width: 80vw;
+}
+
+h1 {
+    text-align:center;
+
+    text-decoration: underline #c49061;
 }
