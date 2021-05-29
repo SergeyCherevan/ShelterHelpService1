@@ -1,8 +1,12 @@
 ﻿@if (ViewBag.IsAuthenticated == true)
 {
-    <a class="interactive-button" href="/Account/Logout" id="account-button">Выйти</a>
+    <a asp-action="RedactAccount" asp-controller="Users" >
+        <button class="interactive-button"id="account-button" >МойАккаунт</button>
+    </a>
 }
 else
 {
-    <a class="interactive-button" href="#" id="account-button">Войти</a>
+    <a asp-action="Login" asp-controller="Account" >
+        <button class="interactive-button" id="account-button" >Войти</button>
+    </a>
 }

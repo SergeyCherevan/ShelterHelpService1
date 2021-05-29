@@ -1,10 +1,12 @@
 ﻿
+@using ShelterHelpService1.Settings
+
 @model ShelterHelpService1.Models.ViewModels.RegistrationViewModel
 
 <h1 id="Registration">Регистрация</h1>
 
 <form asp-action="Registration" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@ViewBag.returnUrl" accesskeymethod="Post"
-      class="registration-form">
+      class="form">
 
     <div class="columns">
 
@@ -36,7 +38,7 @@
 
             <button id="registration-submit" type="submit" class="interactive-button">Зарегистрироваться</button><br><br>
 
-            <a id="already-registred" class="link" href="#Registration">
+            <a class="link" asp-controller="Account" asp-action="Login">
                 Уже зарегистрированы?
                 <br>
                 Войти

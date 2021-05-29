@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+using ShelterHelpService1.Settings;
+
 namespace ShelterHelpService1.Controllers
 {
     public class HomeController : Controller
@@ -7,9 +9,6 @@ namespace ShelterHelpService1.Controllers
         public IActionResult Index(bool isLoginFormVisible, string loginFormMessage)
         {
             ViewBag.returnUrl = "/";
-
-            ViewBag.isLoginFormVisible = isLoginFormVisible;
-            ViewBag.loginFormMessage = loginFormMessage;
 
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
 

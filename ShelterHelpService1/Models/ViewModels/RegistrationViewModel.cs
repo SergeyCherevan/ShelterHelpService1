@@ -4,9 +4,9 @@ namespace ShelterHelpService1.Models.ViewModels
 {
     public class RegistrationViewModel
     {
-        [Required(ErrorMessage = "Не указан логин")]
+        [Required(ErrorMessage = "Не указан никнейм")]
         [RegularExpression(@"[A-Za-z0-9_]+", ErrorMessage = "Имя пользователя может содержать только латинские сиволы и цифры")]
-        [Display(Name = "Логин")]
+        [Display(Name = "Никнейм")]
         [UIHint("UserName")]
         public string UserName { get; set; }
 

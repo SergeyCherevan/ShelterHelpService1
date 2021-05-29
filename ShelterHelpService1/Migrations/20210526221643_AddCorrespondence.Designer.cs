@@ -9,8 +9,8 @@ using ShelterHelpService1.Models;
 namespace ShelterHelpService1.Migrations
 {
     [DbContext(typeof(ShelterHelpServiceContext))]
-    [Migration("20210526130233_Initial")]
-    partial class Initial
+    [Migration("20210526221643_AddCorrespondence")]
+    partial class AddCorrespondence
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,6 +146,24 @@ namespace ShelterHelpService1.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ShelterHelpService1.Models.CorrespondenceTable", b =>
+                {
+                    b.Property<string>("UserId1FkId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId2FkId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("XmlMessages")
+                        .HasColumnType("TEXT");
+
+                    b.HasIndex("UserId1FkId");
+
+                    b.HasIndex("UserId2FkId");
+
+                    b.ToTable("СorrespondenceTable");
+                });
+
             modelBuilder.Entity("ShelterHelpService1.Models.UserTable", b =>
                 {
                     b.Property<string>("Id")
@@ -168,10 +186,22 @@ namespace ShelterHelpService1.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("HtmlPage")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Image")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastPaymentDate")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
@@ -206,7 +236,7 @@ namespace ShelterHelpService1.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("TimeBannedTo")
+                    b.Property<DateTime?>("TimeBannedTo")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -280,6 +310,21 @@ namespace ShelterHelpService1.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ShelterHelpService1.Models.CorrespondenceTable", b =>
+                {
+                    b.HasOne("ShelterHelpService1.Models.UserTable", "UserId1Fk")
+                        .WithMany()
+                        .HasForeignKey("UserId1FkId");
+
+                    b.HasOne("ShelterHelpService1.Models.UserTable", "UserId2Fk")
+                        .WithMany()
+                        .HasForeignKey("UserId2FkId");
+
+                    b.Navigation("UserId1Fk");
+
+                    b.Navigation("UserId2Fk");
                 });
 #pragma warning restore 612, 618
         }

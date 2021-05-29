@@ -37,7 +37,7 @@ namespace ShelterHelpService1
                 options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            services.AddIdentity<User, IdentityRole>(options =>
+            services.AddIdentity<UserTable, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 5;   // минимальная длина
                 options.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы

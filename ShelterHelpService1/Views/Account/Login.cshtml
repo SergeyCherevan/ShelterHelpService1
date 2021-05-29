@@ -1,0 +1,34 @@
+﻿
+@using ShelterHelpService1.Settings
+
+@model ShelterHelpService1.Models.ViewModels.LoginViewModel
+
+<h1 id="Registration">Вход</h1>
+
+<form asp-action="Login" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@ViewBag.returnUrl" accesskeymethod="Post"
+      class="form" id="login-form">
+
+    <div class="columns">
+
+        <div class="left-block">
+            <img src="~/images/dog-on-form.jpg" class="img-on-form" />
+        </div>
+
+        <div class="right-block">
+
+            <label asp-for="UserName">Никнейм<span>*</span></label><br>
+            <input asp-for="UserName" type="text" required><br>
+            <span asp-validation-for="UserName"></span><br><br>
+
+            <label asp-for="Password">Пароль<span>*</span></label><br>
+            <input asp-for="Password" type="password" required><br>
+            <span asp-validation-for="Password"></span><br><br>
+
+            <button id="login-submit" type="submit" class="interactive-button">Войти</button><br><br>
+            <a class="link" asp-controller="Account" asp-action="Registration">Регистрация</a>
+
+        </div>
+
+    </div>
+
+</form>

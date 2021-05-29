@@ -34,40 +34,40 @@ header {
 	margin-right: 2vw;
 }
 
-.header-menu-list li .link {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-	font-size: 175%;
-	text-decoration: none;
+    .header-menu-list li .link {
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+	    font-size: 175%;
+	    text-decoration: none;
     
-	text-shadow: white .1vw .125vh 0;
+	    text-shadow: white .1vw .125vh 0;
 
-	margin: 0 2.5vw 0 0;
+	    margin: 0 2.5vw 0 0;
 
-    position: relative;
-}
-
-    .header-menu-list li .link:hover {
-	    /*color: #e2c8af;*/
-        color: #593a2e;
-        text-shadow: white .2vw .25vh 0;
+        position: relative;
     }
+
+        .header-menu-list li .link:hover {
+	        /*color: #e2c8af;*/
+            color: #593a2e;
+            text-shadow: white .2vw .25vh 0;
+        }
 
 /*				bell button				*/
 
-    .header-menu-list li .link#bell-button-in-header img {
-        height: min(10vh, 7.5vw);
-        width: min(10vh, 7.5vw);
+        .header-menu-list li .link#bell-button-in-header img {
+            height: min(10vh, 7.5vw);
+            width: min(10vh, 7.5vw);
 
-        transform: rotate(0deg);
-    }
+            transform: rotate(0deg);
+        }
 
-    .header-menu-list li .link#bell-button-in-header img:hover {
-        animation: ring-a-bell 1s;
-    }
+        .header-menu-list li .link#bell-button-in-header img:hover {
+            animation: ring-a-bell 1s;
+        }
 
-    .header-menu-list li .link.begin#bell-button-in-header img {
-        animation: ring-a-bell 1s;
-    }
+        .header-menu-list li .link.begin#bell-button-in-header img {
+            animation: ring-a-bell 1s;
+        }
 
 @keyframes ring-a-bell {
     from {
@@ -95,4 +95,6 @@ header {
         margin: 0 4vw 0 0;
 
         font-size: 175%;
+
+        padding: 2% 4%;
     }

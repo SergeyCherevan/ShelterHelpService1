@@ -9,8 +9,8 @@ using ShelterHelpService1.Models;
 namespace ShelterHelpService1.Migrations
 {
     [DbContext(typeof(ShelterHelpServiceContext))]
-    [Migration("20210526130233_Initial")]
-    partial class Initial
+    [Migration("20210526205712_RenameUserTable")]
+    partial class RenameUserTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

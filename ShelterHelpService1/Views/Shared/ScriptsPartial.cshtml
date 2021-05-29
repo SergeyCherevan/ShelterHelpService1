@@ -2,17 +2,3 @@
 <script src="~/scripts/bell-button.js" asp-append-version="true"></script>
 
 <script src="~/scripts/show-hide.js" asp-append-version="true"></script>
-
-@if (ViewBag.IsAuthenticated != true)
-{
-    <script src="~/scripts/account-button.js" asp-append-version="true"></script>
-
-    <script src="~/scripts/form.js" asp-append-version="true"></script>
-
-    @if (ViewBag.isLoginFormVisible == true)
-    {
-        <script type="text/javascript">
-            showLoginForm();
-        </script>
-    }
-}

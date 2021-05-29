@@ -13,15 +13,22 @@ namespace ShelterHelpService1.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<User> _manager;
-        private readonly SignInManager<User> _signInManager;
-        public AccountController(UserManager<User> userMgr, SignInManager<User> signinMgr)
+        private readonly UserManager<UserTable> _manager;
+        private readonly SignInManager<UserTable> _signInManager;
+        public AccountController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr)
         {
             _manager = userMgr;
             _signInManager = signinMgr;
         }
 
 
+
+        [AllowAnonymous]
+        public IActionResult Login(string returnUrl)
+        {
+            ViewBag.returnUrl = returnUrl;
+            return View();
+        }
 
         [HttpPost]
         [AllowAnonymous]
@@ -33,7 +40,7 @@ namespace ShelterHelpService1.Controllers
                 if (user != null)
                 {
                     await _signInManager.SignOutAsync();
-                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+                    var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
                     if (result.Succeeded)
                     {
                         return Redirect(returnUrl ?? "/");
@@ -42,7 +49,7 @@ namespace ShelterHelpService1.Controllers
                 ModelState.AddModelError(nameof(LoginViewModel.UserName), "Неверный логин или пароль");
             }
 
-            return Redirect( (returnUrl ?? "/") + "?isLoginFormVisible=true&loginFormMessage=Неверный логин или пароль");
+            return View(model);
         }
 
         [AllowAnonymous]
@@ -58,7 +65,7 @@ namespace ShelterHelpService1.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User
+                UserTable user = new UserTable
                 {
                     UserName = model.UserName,
                     Email = model.Email,
@@ -87,8 +94,6 @@ namespace ShelterHelpService1.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            Response.Cookies.Delete("myUser");
-
             await _signInManager.SignOutAsync();
             return Redirect("/");
         }

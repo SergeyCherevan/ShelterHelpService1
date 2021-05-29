@@ -1,0 +1,52 @@
+﻿
+@model ShelterHelpService1.Models.ViewModels.RedactAccountViewModel
+
+<h1 id="Registration">Мой аккаунт</h1>
+
+<form asp-action="RedactAccount" asp-controller="Users" asp-antiforgery="true" accesskeymethod="Post"
+      class="form">
+
+    <div class="columns">
+
+        <div class="left-block">
+            <img src="~/images/dog-on-form.jpg" class="img-on-form">
+
+            <br><br>
+
+            <a asp-action="Logout" asp-controller="Account" class="interactive-button" id="logout-button">Выйти</a>
+        </div>
+
+        <div class="right-block">
+
+            <span class="green-span">@(ViewBag.RedactResult ?? "")</span><br>
+
+            <p>Приветствую, <b>@User.Identity.Name</b>!</p>
+            <p>Здесь вы можете просматривать и редактировать данные своей страницы:</p>
+
+            <label asp-for="Email">Email для регистрации</label><br>
+            <input asp-for="Email" type="text"><br>
+            <span asp-validation-for="Email"></span><br><br>
+
+            <label asp-for="PublicEmail">Публичный Email (виден другим пользователям)</label><br>
+            <input asp-for="PublicEmail" type="text"><br>
+            <span asp-validation-for="PublicEmail"></span><br><br>
+
+            <label asp-for="NewPassword">Новый пароль</label><br>
+            <input asp-for="NewPassword" type="password"><br>
+            <span asp-validation-for="NewPassword"></span><br><br>
+
+            <label asp-for="ConfirmNewPassword">Подтверждение нового пароля</label><br>
+            <input asp-for="ConfirmNewPassword" type="password"><br>
+            <span asp-validation-for="ConfirmNewPassword"></span><br><br>
+
+            <label asp-for="Password">Старый пароль<span>*</span></label><br>
+            <input asp-for="Password" type="password" required><br>
+            <span asp-validation-for="Password"></span><br><br>
+
+            <button id="redact-submit" type="submit" class="interactive-button">Сохранить измениния</button><br><br>
+
+        </div>
+
+    </div>
+
+</form>
