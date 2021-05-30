@@ -12,15 +12,14 @@
 
             <div class="avatar-with-button">
 
-                <img src="~/images/default-avatar.png" class="img-on-form" alt="Изображение не выбранно">
+                <img src="~/users-avatars/@(ViewBag.AvatarName ?? "default-avatar.png")" class="img-on-form" alt="Изображение не выбранно">
 
                 <img src="~/images/upload-arrow.png" id="upload-icon">
 
             </div>
 
-            <input type="file" accept="image/*" id="avatar-input" name="Avatar">
-
-            <br><br>
+            <input type="file" accept="image/*" id="avatar-input" asp-for="Avatar">
+            <span asp-validation-for="Avatar"></span><br><br>
 
             <a asp-action="Logout" asp-controller="Account" class="interactive-button" id="logout-button">Выйти</a>
 

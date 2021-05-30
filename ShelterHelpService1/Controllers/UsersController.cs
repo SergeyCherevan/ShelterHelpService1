@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,15 +17,19 @@ namespace ShelterHelpService1.Controllers
     {
         private readonly UserManager<UserTable> _manager;
         private readonly SignInManager<UserTable> _signInManager;
-        public UsersController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr)
+        private readonly IWebHostEnvironment _appEnvironment;
+        public UsersController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr, IWebHostEnvironment appEnviroment)
         {
             _manager = userMgr;
             _signInManager = signinMgr;
+            _appEnvironment = appEnviroment;
         }
 
         public async Task<IActionResult> RedactAccount()
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
+
+            ViewBag.AvatarName = (await _manager.FindByNameAsync(User.Identity.Name)).Image;
 
             User curUser = (await _manager.GetUserAsync(HttpContext.User)).GetUser();
 
@@ -72,23 +79,53 @@ namespace ShelterHelpService1.Controllers
                     }
                 }
 
+
+
                 user.Email = model.Email;
-                user.PublicEmail = model.PublicEmail;
-                
+                user.PublicEmail = model.PublicEmail;                
 
                 result = await _manager.UpdateAsync(user);
 
                 if (result.Succeeded)
                 {
                     ViewBag.RedactResult = (string)ViewBag.RedactResult + "Данные отредактированны. ";
-
-                    return View(model);
                 }
                 else
                 {
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+
+
+
+                if (model.Avatar != null)
+                {
+                    try
+                    {
+                        string type = model.Avatar.ContentType;
+                        string fileName = Guid.NewGuid().ToString() + "." + type[(type.IndexOf('/') + 1)..];
+
+                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + "/users-avatars/" + fileName, FileMode.Create))
+                        {
+                            await model.Avatar.CopyToAsync(fileStream);
+                        }
+
+
+                        user.Image = fileName;
+
+                        result = await _manager.UpdateAsync(user);
+
+                        if (!result.Succeeded) throw new ApplicationException("Не удалось загрузить аватарку");
+
+
+                        ViewBag.AvatarName = fileName;
+                        ViewBag.RedactResult = (string)ViewBag.RedactResult + "Аватарка заменена. ";
+                    }
+                    catch
+                    {
+                        ModelState.AddModelError(nameof(RedactAccountViewModel.Avatar), "Не удалось загрузить аватарку");
                     }
                 }
             }

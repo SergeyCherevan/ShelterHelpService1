@@ -27,6 +27,8 @@
 
             imageOnForm.src = null;
 
+            avatarInput.value = null;
+
             return;
         }
 
