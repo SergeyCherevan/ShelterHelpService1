@@ -10,6 +10,7 @@
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Domain\" />
     <Folder Include="Service\" />
+    <Folder Include="wwwroot\users-avatars\" />
   </ItemGroup>
 
   <ItemGroup>

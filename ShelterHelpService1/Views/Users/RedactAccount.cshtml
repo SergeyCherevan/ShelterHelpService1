@@ -3,17 +3,27 @@
 
 <h1 id="Registration">Мой аккаунт</h1>
 
-<form asp-action="RedactAccount" asp-controller="Users" asp-antiforgery="true" accesskeymethod="Post"
+<form asp-action="RedactAccount" asp-controller="Users" asp-antiforgery="true" enctype="multipart/form-data" accesskeymethod="Post"
       class="form">
 
     <div class="columns">
 
         <div class="left-block">
-            <img src="~/images/dog-on-form.jpg" class="img-on-form">
+
+            <div class="avatar-with-button">
+
+                <img src="~/images/default-avatar.png" class="img-on-form" alt="Изображение не выбранно">
+
+                <img src="~/images/upload-arrow.png" id="upload-icon">
+
+            </div>
+
+            <input type="file" accept="image/*" id="avatar-input" name="Avatar">
 
             <br><br>
 
             <a asp-action="Logout" asp-controller="Account" class="interactive-button" id="logout-button">Выйти</a>
+
         </div>
 
         <div class="right-block">
@@ -50,3 +60,9 @@
     </div>
 
 </form>
+
+@section AdditionalScripts {
+
+    <script src="~/scripts/avatar-input.js" asp-append-version="true"></script>
+
+}

@@ -1,9 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+
+using System.ComponentModel.DataAnnotations;
 
 namespace ShelterHelpService1.Models.ViewModels
 {
     public class RedactAccountViewModel
     {
+        public IFormFile Avatar { get; set; }
+
         [RegularExpression(@"[A-Za-z0-9_\.]+@[A-Za-z0-9_]+\.[A-Za-z0-9_\.]+", ErrorMessage = "Некорректный Email")]
         [Display(Name = "Email")]
         [UIHint("Email")]

@@ -11,7 +11,17 @@
     <div class="columns">
 
         <div class="left-block">
-            <img src="~/images/dog-on-form.jpg" class="img-on-form">
+
+            <div class="avatar-with-button">
+
+                <img src="~/images/default-avatar.png" class="img-on-form" alt="Изображение не выбранно">
+
+                <img src="~/images/upload-arrow.png" id="upload-icon">
+
+            </div>
+
+            <input type="file" accept="image/*" id="avatar-input" name="Avatar">
+
         </div>
 
         <div class="right-block">
@@ -49,3 +59,9 @@
     </div>
 
 </form>
+
+@section AdditionalScripts {
+
+    <script src="~/scripts/avatar-input.js" asp-append-version="true"></script>
+
+}
