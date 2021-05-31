@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +18,12 @@ namespace ShelterHelpService1.Controllers
     {
         private readonly UserManager<UserTable> _manager;
         private readonly SignInManager<UserTable> _signInManager;
-        public AccountController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr)
+        private readonly IWebHostEnvironment _appEnvironment;
+        public AccountController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr, IWebHostEnvironment appEnviroment)
         {
             _manager = userMgr;
             _signInManager = signinMgr;
+            _appEnvironment = appEnviroment;
         }
 
 
@@ -37,15 +42,19 @@ namespace ShelterHelpService1.Controllers
             if (ModelState.IsValid)
             {
                 IdentityUser user = await _manager.FindByNameAsync(model.UserName);
+
                 if (user != null)
                 {
                     await _signInManager.SignOutAsync();
+
                     var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+
                     if (result.Succeeded)
                     {
                         return Redirect(returnUrl ?? "/");
                     }
                 }
+
                 ModelState.AddModelError(nameof(LoginViewModel.UserName), "Неверный логин или пароль");
             }
 
@@ -77,15 +86,49 @@ namespace ShelterHelpService1.Controllers
                 {
                     // установка куки
                     await _signInManager.SignInAsync(user, false);
-                    return Redirect(returnUrl ?? "/");
                 }
                 else
                 {
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
+
+                        return View(model);
                     }
                 }
+
+
+
+                if (model.Avatar != null)
+                {
+                    try
+                    {
+                        string type = model.Avatar.ContentType;
+                        string fileName = Guid.NewGuid().ToString() + "." + type[(type.IndexOf('/') + 1)..];
+
+                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + "/users-images/" + fileName, FileMode.Create))
+                        {
+                            await model.Avatar.CopyToAsync(fileStream);
+                        }
+
+
+
+                        user.Image = fileName;
+
+                        result = await _manager.UpdateAsync(user);
+
+                        if (!result.Succeeded) throw new ApplicationException("Не удалось загрузить аватарку");
+                    }
+                    catch
+                    {
+                        //ModelState.AddModelError(nameof(RegistrationViewModel.Avatar), "Не удалось загрузить аватарку");
+
+                        //return View(model);
+                    }
+                }                    
+                
+                
+                return Redirect(returnUrl ?? "/");
             }
 
             return View(model);

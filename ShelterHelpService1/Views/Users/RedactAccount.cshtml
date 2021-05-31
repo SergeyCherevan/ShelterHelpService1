@@ -3,6 +3,8 @@
 
 <h1 id="Registration">Мой аккаунт</h1>
 
+@*Если убрать enctype="multipart/form-data", то файл загружаться не будет!*@
+
 <form asp-action="RedactAccount" asp-controller="Users" asp-antiforgery="true" enctype="multipart/form-data" accesskeymethod="Post"
       class="form">
 
@@ -12,7 +14,7 @@
 
             <div class="avatar-with-button">
 
-                <img src="~/users-avatars/@(ViewBag.AvatarName ?? "default-avatar.png")" class="img-on-form" alt="Изображение не выбранно">
+                <img src="~/users-images/@(ViewBag.AvatarName ?? "default-avatar.png")" class="img-on-form" alt="Изображение не выбранно">
 
                 <img src="~/images/upload-arrow.png" id="upload-icon">
 

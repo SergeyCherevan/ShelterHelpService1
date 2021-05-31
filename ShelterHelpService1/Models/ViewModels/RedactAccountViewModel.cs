@@ -6,6 +6,8 @@ namespace ShelterHelpService1.Models.ViewModels
 {
     public class RedactAccountViewModel
     {
+        [Display(Name = "Аватарка")]
+        [UIHint("Avatar")]
         public IFormFile Avatar { get; set; }
 
         [RegularExpression(@"[A-Za-z0-9_\.]+@[A-Za-z0-9_]+\.[A-Za-z0-9_\.]+", ErrorMessage = "Некорректный Email")]

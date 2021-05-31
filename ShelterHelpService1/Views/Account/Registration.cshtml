@@ -5,7 +5,10 @@
 
 <h1 id="Registration">Регистрация</h1>
 
-<form asp-action="Registration" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@ViewBag.returnUrl" accesskeymethod="Post"
+@*Если убрать enctype="multipart/form-data", то файл загружаться не будет!*@
+
+<form asp-action="Registration" asp-controller="Account" asp-antiforgery="true" asp-route-returnUrl="@ViewBag.returnUrl"
+      enctype="multipart/form-data" accesskeymethod="Post"
       class="form">
 
     <div class="columns">
@@ -14,13 +17,14 @@
 
             <div class="avatar-with-button">
 
-                <img src="~/users-avatars/default-avatar.png" class="img-on-form" alt="Изображение не выбранно">
+                <img src="~/users-images/default-avatar.png" class="img-on-form" alt="Изображение не выбранно">
 
                 <img src="~/images/upload-arrow.png" id="upload-icon">
 
             </div>
 
-            <input type="file" accept="image/*" id="avatar-input" name="Avatar">
+            <input type="file" accept="image/*" id="avatar-input" asp-for="Avatar">
+            <span asp-validation-for="Avatar"></span>
 
         </div>
 

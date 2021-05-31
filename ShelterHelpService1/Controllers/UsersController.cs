@@ -107,12 +107,13 @@ namespace ShelterHelpService1.Controllers
                         string type = model.Avatar.ContentType;
                         string fileName = Guid.NewGuid().ToString() + "." + type[(type.IndexOf('/') + 1)..];
 
-                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + "/users-avatars/" + fileName, FileMode.Create))
+                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + "/users-images/" + fileName, FileMode.Create))
                         {
                             await model.Avatar.CopyToAsync(fileStream);
                         }
 
 
+                        string oldFileName = user.Image;
                         user.Image = fileName;
 
                         result = await _manager.UpdateAsync(user);
@@ -122,6 +123,8 @@ namespace ShelterHelpService1.Controllers
 
                         ViewBag.AvatarName = fileName;
                         ViewBag.RedactResult = (string)ViewBag.RedactResult + "Аватарка заменена. ";
+
+                        System.IO.File.Delete(_appEnvironment.WebRootPath + "/users-images/" + oldFileName);
                     }
                     catch
                     {

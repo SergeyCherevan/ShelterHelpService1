@@ -1,9 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+
+using System.ComponentModel.DataAnnotations;
 
 namespace ShelterHelpService1.Models.ViewModels
 {
     public class RegistrationViewModel
     {
+        [Display(Name = "Аватарка")]
+        [UIHint("Avatar")]
+        public IFormFile Avatar { get; set; }
+
         [Required(ErrorMessage = "Не указан никнейм")]
         [RegularExpression(@"[A-Za-z0-9_]+", ErrorMessage = "Имя пользователя может содержать только латинские сиволы и цифры")]
         [Display(Name = "Никнейм")]
