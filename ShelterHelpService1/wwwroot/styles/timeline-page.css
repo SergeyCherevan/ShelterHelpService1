@@ -1,0 +1,125 @@
+﻿.post-block {
+    margin: 2.5vw;
+
+    width: 90%;
+    height: 60vh;
+
+    overflow: hidden;
+
+    position: relative;
+
+    border: 2px solid #593a2e;
+
+    background-color: #f4eae2;
+}
+
+    .post-block .post-block-header {
+        margin: 1vw;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .post-block .post-block-header h1 {
+
+            margin: 0;
+
+            font-size: 150%;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .post-block .post-block-header h6 {
+
+            margin: 0;
+
+            font-style: italic;
+        }
+
+    .post-block .post-block-content {
+        padding: 1vw;
+    }
+
+    .post-block .post-block-footer {
+        position:absolute;
+
+        bottom: 0;
+        height: 7.5vh;
+        width: 98%;
+
+        background: linear-gradient(to bottom, rgba(244, 234, 226, .25), rgba(244, 234, 226, .75) 25%, rgba(244, 234, 226, 1) 100%);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        
+        padding: 1%;
+    }
+
+        .post-block .post-block-footer .interactive-button {
+            padding: .2vw;
+        }
+
+        .post-block .post-block-footer .arrow-down {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 6vw;
+            height: 3vw;
+
+            transition: .6s;
+        }
+
+            .post-block .post-block-footer .arrow-down:hover {
+                animation: arrow-down-vibration 1.25s;
+            }
+
+            .post-block .post-block-footer .arrow-down:active {
+                width: 7vw;
+                height: 3.5vw;
+            }
+
+            @keyframes arrow-down-vibration {
+                from {
+                    top: 50%;
+                    animation-timing-function: ease;
+                }
+
+                20% {
+                    top: 60%;
+                    animation-timing-function: ease;
+                }
+
+                40% {
+                    top: 55%;
+                    animation-timing-function: ease;
+                }
+
+                60% {
+                    top: 60%;
+                    animation-timing-function: ease;
+                }
+
+                to {
+                    top: 50%;
+                    animation-timing-function: linear;
+                }
+            }
+
+.post-block.see-more {
+    height: auto;
+}
+
+    .post-block.see-more .post-block-footer {
+        position: relative;
+    }
+
+        .post-block.see-more .post-block-footer .arrow-down:hover {
+            animation: upload-icon-vibration 1.25s;
+        }

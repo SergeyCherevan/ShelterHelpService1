@@ -1,8 +1,10 @@
 ﻿class LeftMenuItem extends React.Component {
     render() {
-        return <div><a className="link" href={this.props.href != undefined ? this.props.href : "#"}>
-            <img src={"/images/" + this.props.file} className="link-icon" />{this.props.title}
-        </a></div>;
+        return  <div>
+                    <a className="link" href={this.props.href != undefined ? this.props.href : "#"}>
+                        <img src={"/images/" + this.props.file} className="link-icon" />{this.props.title}
+                    </a>
+                </div>;
     }
 }
 
