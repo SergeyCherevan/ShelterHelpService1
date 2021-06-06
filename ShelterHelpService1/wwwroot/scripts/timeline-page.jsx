@@ -50,7 +50,7 @@ class PostBlock extends React.Component {
                                 ('0' + date.getMinutes()).slice(-2) + " / " +
                                 ('0' + date.getDate()).slice(-2) + "." + 
                                 ('0' + date.getMonth()).slice(-2) + "." + 
-                                ('0' + date.getFullYear()).slice(-2)
+                                date.getFullYear().toString().slice(-2)
                             }
                             </h6>
 

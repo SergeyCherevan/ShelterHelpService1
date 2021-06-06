@@ -28,6 +28,7 @@ namespace ShelterHelpService1.Controllers
 
 
 
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {
@@ -61,6 +62,7 @@ namespace ShelterHelpService1.Controllers
             return View(model);
         }
 
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Registration(string returnUrl)
         {

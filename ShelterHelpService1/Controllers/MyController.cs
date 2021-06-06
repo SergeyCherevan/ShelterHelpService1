@@ -13,18 +13,19 @@ using ShelterHelpService1.Models.ViewModels;
 namespace ShelterHelpService1.Controllers
 {
     [Authorize]
-    public class UsersController : Controller
+    public class MyController : Controller
     {
         private readonly UserManager<UserTable> _manager;
         private readonly SignInManager<UserTable> _signInManager;
         private readonly IWebHostEnvironment _appEnvironment;
-        public UsersController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr, IWebHostEnvironment appEnviroment)
+        public MyController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr, IWebHostEnvironment appEnviroment)
         {
             _manager = userMgr;
             _signInManager = signinMgr;
             _appEnvironment = appEnviroment;
         }
 
+        [HttpGet]
         public async Task<IActionResult> RedactAccount()
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;

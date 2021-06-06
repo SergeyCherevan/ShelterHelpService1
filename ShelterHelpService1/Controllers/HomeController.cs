@@ -6,7 +6,7 @@ namespace ShelterHelpService1.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(bool isLoginFormVisible, string loginFormMessage)
+        public IActionResult Timeline(bool isLoginFormVisible, string loginFormMessage)
         {
             ViewBag.returnUrl = "/";
 
