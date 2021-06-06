@@ -17,17 +17,59 @@
 
 class PostBlock extends React.Component {
     render() {
+
+        let timelinePost = this.props.timelinePostData;
+
+        let isActual = timelinePost.isActual;
+
+        let date = timelinePost.datePublicating;
+
+        let author = timelinePost.author;
+
         return  <div className="post-block">
 
                     <div className="post-block-header">
 
-                        <h1>{this.props.title}</h1>
+                        <h1>{timelinePost.title}</h1>
 
-                        <h6 className="author">автор: <a href="#">{this.props.author}</a></h6>
+                        <h6 className="author">автор: <a href={"Content/Users?nick=" + author.userName}>{author.userName}</a></h6>
 
                     </div>
 
-                    <div className="post-block-content" dangerouslySetInnerHTML={{ __html: this.props.content }}></div>
+
+
+                    <div className="post-block-anderheader">
+
+                        <div className="right-part">
+
+                            <h6 className="category">{timelinePost.category}</h6>
+
+                            <h6>
+                            {
+                                ('0' + date.getHours()).slice(-2) + ":" + 
+                                ('0' + date.getMinutes()).slice(-2) + " / " +
+                                ('0' + date.getDate()).slice(-2) + "." + 
+                                ('0' + date.getMonth()).slice(-2) + "." + 
+                                ('0' + date.getFullYear()).slice(-2)
+                            }
+                            </h6>
+
+                            <h6 className={"is-actual-" + isActual}>{isActual ? "" : "не"} актуально</h6>
+
+                        </div>
+
+
+
+                <div className="left-part">{timelinePost.rating} <span className="star">★</span></div>
+
+
+                    </div>
+
+
+
+            <div className="post-block-content" dangerouslySetInnerHTML={{ __html: timelinePost.htmlPage }}></div>
+
+
 
                     <div className="post-block-footer">
 
@@ -65,8 +107,22 @@ let countOfPosts = 3;
             `;
 
         ReactDOM.render(
-            <PostBlock number={i} title="Барсик ищет хозяина" author="Марина"
-                content={loremIpsum}></PostBlock>,
+            <PostBlock
+                number={i}
+
+                timelinePostData={{
+                    author: {
+                        userName: "Марина"
+                    },
+                    title: "Барсик ищет хозяина",
+                    category: "Найден попугай",
+                    datePublicating: new Date(),
+                    isActual: (i % 2 == 0),
+                    htmlPage: loremIpsum,
+                    rating: ((i + 1) / countOfPosts * 10).toFixed(1),
+                    xmlComments: ""
+                }}>
+            </PostBlock>,
             newPost
         );
 
