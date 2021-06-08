@@ -95,6 +95,8 @@ class PostBlock extends React.Component {
 // Получение данных от сервера
 
 {
+    document.body.style.cursor = 'wait';
+
     let request = new XMLHttpRequest();
 
     let url = "/Content/TimelinePosts";
@@ -178,4 +180,6 @@ function showTimeLinePosts(jsonResponceText) {
             seeMore.addEventListener('click', clickSeeMore);
         }
     }
+
+    document.body.style.cursor = 'default';
 }

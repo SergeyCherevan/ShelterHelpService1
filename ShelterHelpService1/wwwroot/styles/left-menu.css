@@ -22,15 +22,21 @@
         display: inline-flex;
         align-items: center;
 
+        width: 100%;
+
         margin: 1vh 0 0 .5vw;
     }
+
+        #left-menu div:hover {
+            cursor: pointer;
+        }
 
         #left-menu div a {
             display: inline-flex;
             align-items: center;
         }
 
-            #left-menu a .link-icon {
+            #left-menu div a .link-icon {
                 height: min(9vh, 6vw);
                 width: min(9vh, 6vw);
 
@@ -39,7 +45,7 @@
                 margin: 0 1vw 0 0;
             }
 
-                #left-menu a:hover .link-icon {
+                #left-menu div:hover a .link-icon {
                     animation: left-menu-buttons-vibration 1s;
                 }
 
