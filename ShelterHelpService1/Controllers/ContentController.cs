@@ -28,6 +28,7 @@ namespace ShelterHelpService1.Controllers
             var result = from e in timelinePostTable
                          select (object) new
                          {
+                             id = e.Id,
                              authorName = e.Author.UserName,
                              title = e.Title,
                              category = e.Category,

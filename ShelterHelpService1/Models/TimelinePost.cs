@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -23,4 +24,9 @@ namespace ShelterHelpService1.Models
     }
 
     public enum TimelinePostEnum { LostAnimal, FindAnimal, Action, Advertising, ShelterAnimal }
+
+    public class ListOfTimelinePostCategories
+    {
+        public List<string> list = new List<string> { "Пропало животное", "Найдено животное", "Акция", "Реклама", "Наш питомец" };
+    }
 }

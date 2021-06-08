@@ -14,8 +14,6 @@ using React.AspNet;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using JavaScriptEngineSwitcher.ChakraCore;
 
-using Newtonsoft.Json;
-
 using ShelterHelpService1.Settings;
 using ShelterHelpService1.Models;
 
@@ -58,10 +56,12 @@ namespace ShelterHelpService1
                 AddSessionStateTempDataProvider();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddReact();
 
+            services.AddReact();
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName)
                 .AddChakraCore();
+
+            services.AddScoped<ListOfTimelinePostCategories>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

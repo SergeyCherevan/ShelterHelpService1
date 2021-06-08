@@ -86,38 +86,56 @@ class PostBlock extends React.Component {
     }
 }
 
-// Создание 3-ёх новостных блоков
+// Получение данных от сервера
 
 let countOfPosts = 3;
+
 {
+    let request = new XMLHttpRequest();
+
+    let url = "/Content/TimelinePosts";
+
+    request.open('GET', url);
+
+    request.setRequestHeader('Content-Type', 'application/json');
+
+    request.addEventListener('readystatechange', () => {
+
+        if (request.readyState === 4 && request.status === 200) {
+
+            showTimeLinePosts(request.response);
+        }
+
+    });
+
+    request.send();
+}
+
+// Отображение полученных с сервера блоков в ленте новостей
+
+function showTimeLinePosts(jsonResponceText) {
+    
+    let jsonResponce = JSON.parse(jsonResponceText);
+
     let mainRightColumn = document.getElementsByClassName("main-right-column")[0];
 
-    for (let i = 0; i < countOfPosts; i++) {
+    for (let postData of jsonResponce) {
 
         let newPost = document.createElement('div');
-        newPost.id = "post-block-" + i;
-
-        let loremIpsum = `
-            <img src="/images/dog-on-form.jpg" style="float: left; width: 30vw; margin: 0 1vw 1vw 0"></img>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            `;
+        newPost.id = "post-block-" + postData.id;
 
         ReactDOM.render(
             <PostBlock
                 timelinePostData={{
-                    id: i,
-                    authorName: "Марина",
-                    title: "Барсик ищет хозяина",
-                    category: "Найден попугай",
-                    datePublicating: new Date(),
-                    isActual: (i % 2 == 0),
-                    htmlPage: loremIpsum,
-                    rating: ((i + 1) / countOfPosts * 10).toFixed(1),
-                    xmlComments: ""
+                    id: postData.id,
+                    authorName: postData.authorName,
+                    title: postData.title,
+                    category: window.listOfTimelinePostCategories[postData.category],
+                    datePublicating: new Date(postData.datePublicating),
+                    isActual: postData.isActual,
+                    htmlPage: postData.htmlPage,
+                    rating: postData.rating,
+                    xmlComments: postData.xmlComments,
                 }}>
             </PostBlock>,
             newPost
@@ -128,7 +146,7 @@ let countOfPosts = 3;
 
 
 
-        let seeMore = document.getElementById("see-more-" + i);
+        let seeMore = document.getElementById("see-more-" + postData.id);
 
         seeMore.addEventListener('click', clickSeeMore);
 
