@@ -28,7 +28,6 @@ namespace ShelterHelpService1.Controllers
         [HttpGet]
         public async Task<IActionResult> RedactAccount()
         {
-            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
 
             ViewBag.AvatarName = (await _manager.FindByNameAsync(User.Identity.Name)).Image;
 
@@ -44,14 +43,27 @@ namespace ShelterHelpService1.Controllers
         [HttpPost]
         public async Task<IActionResult> RedactAccount(RedactAccountViewModel model)
         {
-            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
 
             UserEntity user; IdentityResult result;
+
             ViewBag.RedactResult = "";
+            ViewBag.AvatarName = (await _manager.FindByNameAsync(User.Identity.Name)).Image;
 
             if (ModelState.IsValid)
             {
                 user = await _manager.FindByNameAsync(User.Identity.Name);
+
+                var  isPasswordRight = await _manager.CheckPasswordAsync(user, model.Password);
+
+                if (!isPasswordRight)
+                {
+                    ModelState.AddModelError(nameof(RedactAccountViewModel.Password), "Неверный пароль");
+
+                    return View(model);
+                }
+
+
+
 
                 if (model.NewPassword != null)
                 {
@@ -82,6 +94,7 @@ namespace ShelterHelpService1.Controllers
 
 
 
+
                 user.Email = model.Email;
                 user.PublicEmail = model.PublicEmail;                
 
@@ -98,6 +111,7 @@ namespace ShelterHelpService1.Controllers
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
+
 
 
 

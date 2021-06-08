@@ -10,8 +10,6 @@ namespace ShelterHelpService1.Controllers
         {
             ViewBag.returnUrl = "/";
 
-            ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
-
             return View();
         }
     }

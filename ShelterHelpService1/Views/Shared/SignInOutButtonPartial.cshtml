@@ -1,4 +1,4 @@
-﻿@if (ViewBag.IsAuthenticated == true)
+﻿@if (User.Identity.IsAuthenticated == true)
 {
     <a asp-action="RedactAccount" asp-controller="My" >
         <button class="interactive-button"id="account-button" >МойАккаунт</button>
