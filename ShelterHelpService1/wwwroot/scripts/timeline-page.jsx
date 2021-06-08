@@ -24,7 +24,7 @@ class PostBlock extends React.Component {
 
         let date = timelinePost.datePublicating;
 
-        let author = timelinePost.author;
+        let authorName = timelinePost.authorName;
 
         return  <div className="post-block">
 
@@ -32,7 +32,7 @@ class PostBlock extends React.Component {
 
                         <h1>{timelinePost.title}</h1>
 
-                        <h6 className="author">автор: <a href={"Content/Users?nick=" + author.userName}>{author.userName}</a></h6>
+                        <h6 className="author">автор: <a href={"Content/Users?nick=" + authorName}>{authorName}</a></h6>
 
                     </div>
 
@@ -73,12 +73,12 @@ class PostBlock extends React.Component {
 
                     <div className="post-block-footer">
 
-                        <button className="interactive-button" id={"see-on-page-button-" + this.props.number} >Смотреть на странице</button>
+                        <button className="interactive-button" id={"see-on-page-button-" + timelinePost.id} >Смотреть на странице</button>
 
-                        <img className="arrow-down" id={"see-more-" + this.props.number}
+                        <img className="arrow-down" id={"see-more-" + timelinePost.id}
                             src="/images/arrow-down.png"></img>
 
-                        <button className="interactive-button" id={"comment-button-" + this.props.number} >Комментировать</button>
+                        <button className="interactive-button" id={"comment-button-" + timelinePost.id} >Комментировать</button>
 
                     </div>
 
@@ -108,12 +108,9 @@ let countOfPosts = 3;
 
         ReactDOM.render(
             <PostBlock
-                number={i}
-
                 timelinePostData={{
-                    author: {
-                        userName: "Марина"
-                    },
+                    id: i,
+                    authorName: "Марина",
                     title: "Барсик ищет хозяина",
                     category: "Найден попугай",
                     datePublicating: new Date(),

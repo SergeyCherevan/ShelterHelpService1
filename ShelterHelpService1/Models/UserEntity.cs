@@ -1,24 +1,30 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace ShelterHelpService1.Models
 {
-    public class UserTable : IdentityUser
+    public class UserEntity : IdentityUser
     {
-        public virtual UserCategoryEnum Category { get; set; }
-        public virtual string Image { get; set; }
-        public virtual string PublicEmail { get; set; }
-        public virtual string HtmlPage { get; set; }
-        public virtual decimal Rating { get; set; }
-        public virtual string XmlComments { get; set; }
-        public virtual DateTime? TimeBannedTo { get; set; }
+        public UserCategoryEnum Category { get; set; }
+        public string Image { get; set; }
+        public string PublicEmail { get; set; }
+        public string HtmlPage { get; set; }
+        public decimal Rating { get; set; }
+        public string XmlComments { get; set; }
+        public DateTime? TimeBannedTo { get; set; }
 
-        public virtual string FirstName { get; set; }
-        public virtual string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public virtual string FullName { get; set; }
-        public virtual DateTime? LastPaymentDate { get; set; }
+        public string FullName { get; set; }
+        public DateTime? LastPaymentDate { get; set; }
+
+        [JsonIgnore]
+        [InverseProperty("Author")]
+        public virtual ICollection<TimelinePost> TimelinePosts { get; set; } = new List<TimelinePost>();
 
         public User GetUser()
         {

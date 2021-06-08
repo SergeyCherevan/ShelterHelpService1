@@ -9,6 +9,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Domain\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Service\" />
     <Folder Include="wwwroot\scripts\react\" />
   </ItemGroup>

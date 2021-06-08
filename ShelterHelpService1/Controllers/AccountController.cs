@@ -16,10 +16,10 @@ namespace ShelterHelpService1.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<UserTable> _manager;
-        private readonly SignInManager<UserTable> _signInManager;
+        private readonly UserManager<UserEntity> _manager;
+        private readonly SignInManager<UserEntity> _signInManager;
         private readonly IWebHostEnvironment _appEnvironment;
-        public AccountController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr, IWebHostEnvironment appEnviroment)
+        public AccountController(UserManager<UserEntity> userMgr, SignInManager<UserEntity> signinMgr, IWebHostEnvironment appEnviroment)
         {
             _manager = userMgr;
             _signInManager = signinMgr;
@@ -76,7 +76,7 @@ namespace ShelterHelpService1.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserTable user = new UserTable
+                UserEntity user = new UserEntity
                 {
                     UserName = model.UserName,
                     Email = model.Email,

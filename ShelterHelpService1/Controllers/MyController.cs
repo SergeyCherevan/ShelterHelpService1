@@ -15,10 +15,10 @@ namespace ShelterHelpService1.Controllers
     [Authorize]
     public class MyController : Controller
     {
-        private readonly UserManager<UserTable> _manager;
-        private readonly SignInManager<UserTable> _signInManager;
+        private readonly UserManager<UserEntity> _manager;
+        private readonly SignInManager<UserEntity> _signInManager;
         private readonly IWebHostEnvironment _appEnvironment;
-        public MyController(UserManager<UserTable> userMgr, SignInManager<UserTable> signinMgr, IWebHostEnvironment appEnviroment)
+        public MyController(UserManager<UserEntity> userMgr, SignInManager<UserEntity> signinMgr, IWebHostEnvironment appEnviroment)
         {
             _manager = userMgr;
             _signInManager = signinMgr;
@@ -46,7 +46,7 @@ namespace ShelterHelpService1.Controllers
         {
             ViewBag.IsAuthenticated = User.Identity.IsAuthenticated;
 
-            UserTable user; IdentityResult result;
+            UserEntity user; IdentityResult result;
             ViewBag.RedactResult = "";
 
             if (ModelState.IsValid)
@@ -57,9 +57,9 @@ namespace ShelterHelpService1.Controllers
                 {
 
                     var _passwordValidator =
-                        HttpContext.RequestServices.GetService(typeof(IPasswordValidator<UserTable>)) as IPasswordValidator<UserTable>;
+                        HttpContext.RequestServices.GetService(typeof(IPasswordValidator<UserEntity>)) as IPasswordValidator<UserEntity>;
                     var _passwordHasher =
-                        HttpContext.RequestServices.GetService(typeof(IPasswordHasher<UserTable>)) as IPasswordHasher<UserTable>;
+                        HttpContext.RequestServices.GetService(typeof(IPasswordHasher<UserEntity>)) as IPasswordHasher<UserEntity>;
 
                     result =
                         await _passwordValidator.ValidateAsync(_manager, user, model.NewPassword);

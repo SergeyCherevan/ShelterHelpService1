@@ -9,8 +9,8 @@ using ShelterHelpService1.Models;
 namespace ShelterHelpService1.Migrations
 {
     [DbContext(typeof(ShelterHelpServiceContext))]
-    [Migration("20210526130233_Initial")]
-    partial class Initial
+    [Migration("20210608080327_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,7 +146,43 @@ namespace ShelterHelpService1.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ShelterHelpService1.Models.UserTable", b =>
+            modelBuilder.Entity("ShelterHelpService1.Models.TimelinePost", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DatePublicating")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HtmlPage")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActual")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Rating")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("XmlComments")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("TimelinePostTable");
+                });
+
+            modelBuilder.Entity("ShelterHelpService1.Models.UserEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -168,10 +204,22 @@ namespace ShelterHelpService1.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("HtmlPage")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Image")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastPaymentDate")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
@@ -206,7 +254,7 @@ namespace ShelterHelpService1.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("TimeBannedTo")
+                    b.Property<DateTime?>("TimeBannedTo")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -242,7 +290,7 @@ namespace ShelterHelpService1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ShelterHelpService1.Models.UserTable", null)
+                    b.HasOne("ShelterHelpService1.Models.UserEntity", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -251,7 +299,7 @@ namespace ShelterHelpService1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ShelterHelpService1.Models.UserTable", null)
+                    b.HasOne("ShelterHelpService1.Models.UserEntity", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -266,7 +314,7 @@ namespace ShelterHelpService1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ShelterHelpService1.Models.UserTable", null)
+                    b.HasOne("ShelterHelpService1.Models.UserEntity", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -275,11 +323,25 @@ namespace ShelterHelpService1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ShelterHelpService1.Models.UserTable", null)
+                    b.HasOne("ShelterHelpService1.Models.UserEntity", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ShelterHelpService1.Models.TimelinePost", b =>
+                {
+                    b.HasOne("ShelterHelpService1.Models.UserEntity", "Author")
+                        .WithMany("TimelinePosts")
+                        .HasForeignKey("AuthorId");
+
+                    b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("ShelterHelpService1.Models.UserEntity", b =>
+                {
+                    b.Navigation("TimelinePosts");
                 });
 #pragma warning restore 612, 618
         }
