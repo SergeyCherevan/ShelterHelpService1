@@ -8,7 +8,7 @@
 
 
 <script>
-
     window.listOfTimelinePostCategories = @Html.Raw(JsonConvert.SerializeObject(Categories.list));
 
+    window.isAuthenticated = @(User.Identity.IsAuthenticated.ToString().ToLower());
 </script>

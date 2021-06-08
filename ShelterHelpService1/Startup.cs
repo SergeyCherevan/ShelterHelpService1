@@ -83,7 +83,7 @@ namespace ShelterHelpService1
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Timeline}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Timeline}/{param1?}/{param2?}");
             });
         }
     }

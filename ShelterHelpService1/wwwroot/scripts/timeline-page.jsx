@@ -26,69 +26,73 @@ class PostBlock extends React.Component {
 
         let authorName = timelinePost.authorName;
 
-        return  <div className="post-block">
+        return (
+            <div className="post-block">
 
-                    <div className="post-block-header">
+                <div className="post-block-header">
 
-                        <h1>{timelinePost.title}</h1>
+                    <h1>{timelinePost.title}</h1>
 
-                        <h6 className="author">автор: <a href={"Content/Users?nick=" + authorName}>{authorName}</a></h6>
+                    <h6 className="author">автор: <a href={"Content/User/" + authorName}>{authorName}</a></h6>
 
-                    </div>
+                </div>
 
 
 
-                    <div className="post-block-anderheader">
+                <div className="post-block-anderheader">
 
-                        <div className="right-part">
+                    <div className="right-part">
 
-                            <h6 className="category">{timelinePost.category}</h6>
+                        <h6 className="category">{timelinePost.category}</h6>
 
-                            <h6>
+                        <h6>
                             {
-                                ('0' + date.getHours()).slice(-2) + ":" + 
+                                ('0' + date.getHours()).slice(-2) + ":" +
                                 ('0' + date.getMinutes()).slice(-2) + " / " +
-                                ('0' + date.getDate()).slice(-2) + "." + 
-                                ('0' + date.getMonth()).slice(-2) + "." + 
-                                date.getFullYear().toString().slice(-2)
+                                ('0' + date.getDate()).slice(-2) + "." +
+                                ('0' + date.getMonth()).slice(-2) + "." +
+                                date.getFullYear().toString()
                             }
-                            </h6>
+                        </h6>
 
-                            <h6 className={"is-actual-" + isActual}>{isActual ? "" : "не"} актуально</h6>
-
-                        </div>
-
-
-
-                <div className="left-part">{timelinePost.rating} <span className="star">★</span></div>
-
+                        <h6 className={"is-actual-" + isActual}>{isActual ? "" : "не"} актуально</h6>
 
                     </div>
 
 
 
-            <div className="post-block-content" dangerouslySetInnerHTML={{ __html: timelinePost.htmlPage }}></div>
+                    <div className="left-part">{timelinePost.rating} <span className="star">★</span></div>
+
+
+                </div>
 
 
 
-                    <div className="post-block-footer">
+                <div className="post-block-content" dangerouslySetInnerHTML={{ __html: timelinePost.htmlPage }}></div>
 
-                        <button className="interactive-button" id={"see-on-page-button-" + timelinePost.id} >Смотреть на странице</button>
 
-                        <img className="arrow-down" id={"see-more-" + timelinePost.id}
-                            src="/images/arrow-down.png"></img>
 
-                        <button className="interactive-button" id={"comment-button-" + timelinePost.id} >Комментировать</button>
+                <div className="post-block-footer">
 
-                    </div>
+                    <button className="interactive-button" id={"see-on-page-button-" + timelinePost.id}>Смотреть на странице</button>
 
-                </div>;
+                    <img className="arrow-down" id={"see-more-" + timelinePost.id}
+                        src="/images/arrow-down.png"></img>
+
+                    <button className="interactive-button" id={"comment-button-" + timelinePost.id}>
+                        { window.isAuthenticated ? "Комментировать" : "Комментарии" }                            
+                    </button>
+
+                </div>
+
+            </div>
+        );
     }
 }
 
-// Получение данных от сервера
 
-let countOfPosts = 3;
+
+// Получение данных от сервера
 
 {
     let request = new XMLHttpRequest();
@@ -111,6 +115,8 @@ let countOfPosts = 3;
     request.send();
 }
 
+
+
 // Отображение полученных с сервера блоков в ленте новостей
 
 function showTimeLinePosts(jsonResponceText) {
@@ -126,7 +132,9 @@ function showTimeLinePosts(jsonResponceText) {
 
         ReactDOM.render(
             <PostBlock
+
                 timelinePostData={{
+
                     id: postData.id,
                     authorName: postData.authorName,
                     title: postData.title,
@@ -136,13 +144,13 @@ function showTimeLinePosts(jsonResponceText) {
                     htmlPage: postData.htmlPage,
                     rating: postData.rating,
                     xmlComments: postData.xmlComments,
+
                 }}>
             </PostBlock>,
             newPost
         );
 
         mainRightColumn.append(newPost);
-
 
 
 

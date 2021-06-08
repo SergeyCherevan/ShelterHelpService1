@@ -41,5 +41,10 @@ namespace ShelterHelpService1.Controllers
 
             return Json(result);
         }
+
+        public async Task<IActionResult> User(string param1)
+        {
+            return Json(param1);
+        }
     }
 }
