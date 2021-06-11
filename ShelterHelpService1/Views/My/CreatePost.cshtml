@@ -1,0 +1,44 @@
+﻿
+@using ShelterHelpService1.Models
+
+@using ShelterHelpService1.Models.ViewModels
+
+@inject ListOfTimelinePostCategories Categories
+
+@model CreatePostViewModel
+
+<h1>Создать пост</h1>
+
+@*Если убрать enctype="multipart/form-data", то файл загружаться не будет!*@
+
+<form asp-action="CreatePost" asp-controller="My" asp-antiforgery="true" enctype="multipart/form-data" accesskeymethod="Post"
+      class="form create-post">
+
+    <label asp-for="Title">Заголовок поста</label><br>
+    <input asp-for="Title" type="text" required><br>
+    <span asp-validation-for="Title"></span><br><br>
+
+    <label asp-for="Category">Категория поста: </label>
+
+    <select size="1" asp-for="Category">
+
+        @foreach (TimelinePostEnum e in Enum.GetValues<TimelinePostEnum>())
+        {
+            <option value="@((int)e)">@Categories.list[(int)e]</option>
+        }
+
+    </select><br>
+    <span asp-validation-for="Category"></span><br><br>
+
+    <div id="create-post-editor"></div><br><br>
+
+    <button id="redact-submit" type="submit" class="interactive-button">Сохранить измениния</button>
+
+</form>
+
+@section AdditionalScripts
+{
+    <script src="~/scripts/ckeditor/ckeditor-classic.js" asp-append-version="true"></script>
+
+    <script src="~/scripts/create-post.js" asp-append-version="true"></script>
+}

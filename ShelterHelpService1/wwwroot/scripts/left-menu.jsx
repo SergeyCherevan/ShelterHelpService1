@@ -22,7 +22,7 @@
                 <>
                     <LeftMenuItem title="Сообщения" file="email.png" />
                     <LeftMenuItem title="Уведомления" file="bell.png" />
-                    <LeftMenuItem title="Сделать пост" file="megaphone.png" />
+                    <LeftMenuItem title="Сделать пост" file="megaphone.png" href="/My/CreatePost" />
                 </>
                     : ""
             }

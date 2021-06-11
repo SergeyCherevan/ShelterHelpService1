@@ -150,5 +150,17 @@ namespace ShelterHelpService1.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult CreatePost()
+        {
+            return View(new CreatePostViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult CreatePost(CreatePostViewModel model)
+        {
+            return View(model);
+        }
     }
 }
