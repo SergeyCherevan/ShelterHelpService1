@@ -5,5 +5,14 @@
 
 #create-post-editor {
 
-    width: 75%;
+    width: 35%;
+}
+
+.mce-content-body.create-post-input-block {
+
+    font-size: 150%;
+
+    padding: 1vw;
+
+    background-color: #f4eae2;
 }

@@ -30,7 +30,12 @@
     </select><br>
     <span asp-validation-for="Category"></span><br><br>
 
-    <div id="create-post-editor"></div><br><br>
+    <div>
+
+        <textarea id="create-post-editor" asp-for="HtmlPage">Контент поста</textarea>
+
+    </div><br>
+    <span asp-validation-for="HtmlPage"></span><br><br>
 
     <button id="redact-submit" type="submit" class="interactive-button">Сохранить измениния</button>
 
@@ -38,7 +43,8 @@
 
 @section AdditionalScripts
 {
-    <script src="~/scripts/ckeditor/ckeditor-classic.js" asp-append-version="true"></script>
+    <script src="https://cdn.tiny.cloud/1/6r5jxea1fjw8vfekjee9pquejayu22ec5og54oj34s9x6pcu/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
 
     <script src="~/scripts/create-post.js" asp-append-version="true"></script>
 }
