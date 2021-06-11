@@ -15,11 +15,15 @@ namespace ShelterHelpService1.Controllers
     [Authorize]
     public class MyController : Controller
     {
+        private readonly ShelterHelpServiceContext _context;
+
         private readonly UserManager<UserEntity> _manager;
         private readonly SignInManager<UserEntity> _signInManager;
+
         private readonly IWebHostEnvironment _appEnvironment;
-        public MyController(UserManager<UserEntity> userMgr, SignInManager<UserEntity> signinMgr, IWebHostEnvironment appEnviroment)
+        public MyController(ShelterHelpServiceContext context, UserManager<UserEntity> userMgr, SignInManager<UserEntity> signinMgr, IWebHostEnvironment appEnviroment)
         {
+            _context = context;
             _manager = userMgr;
             _signInManager = signinMgr;
             _appEnvironment = appEnviroment;
@@ -158,8 +162,30 @@ namespace ShelterHelpService1.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePost(CreatePostViewModel model)
+        public async Task<IActionResult> CreatePost(CreatePostViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                TimelinePost post = new()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    AuthorId = (await _manager.FindByNameAsync(User.Identity.Name)).Id,
+                    Category = model.Category,
+                    Title = model.Title,
+                    DatePublicating = DateTime.Now,
+                    IsActual = true,
+                    HtmlPage = model.HtmlPage,
+                    Rating = 0,
+                    XmlComments = "",
+                };
+
+                _context.TimelinePostTable.Add(post);
+
+                _context.SaveChanges();
+
+                return Redirect("/Home/Timeline");
+            }
+
             return View(model);
         }
     }

@@ -16,3 +16,8 @@
 
     background-color: #f4eae2;
 }
+
+    .mce-content-body.create-post-input-block img {
+
+        margin: 1vw;
+    }

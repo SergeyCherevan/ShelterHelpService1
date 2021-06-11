@@ -123,9 +123,7 @@ namespace ShelterHelpService1.Controllers
                     }
                     catch
                     {
-                        //ModelState.AddModelError(nameof(RegistrationViewModel.Avatar), "Не удалось загрузить аватарку");
 
-                        //return View(model);
                     }
                 }                    
                 

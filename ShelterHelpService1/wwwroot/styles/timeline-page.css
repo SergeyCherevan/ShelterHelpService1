@@ -87,7 +87,13 @@
     }
 
     .post-block .post-block-content {
+
         padding: 1vw;
+    }
+
+    .post-block .post-block-content img {
+
+        margin: 1vw;
     }
 
     .post-block .post-block-footer {
