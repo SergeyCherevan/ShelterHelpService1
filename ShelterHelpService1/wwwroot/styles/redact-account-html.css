@@ -1,0 +1,21 @@
+﻿.one-column-section {
+
+    padding: 2.5vw;
+}
+
+#redact-account-html-editor {
+
+    width: 35%;
+}
+
+.mce-content-body.redact-account-html-editor-input-block {
+
+    font-size: 150%;
+
+    padding: 1vw;
+}
+
+    .mce-content-body.redact-account-html-input-block img {
+
+        margin: 1vw;
+    }

@@ -1,20 +1,20 @@
 ﻿
 {
     tinymce.init({
-        selector: '#create-post-editor',
+        selector: '#redact-account-html-editor',
         toolbar: 'undo redo | styleselect | bold underline italic| alignleft aligncenter alignright alignjustify | outdent indent',
         content_css: '/styles/style.css',
     });
 
     setTimeout(() => {
 
-        let tinymceIframe = document.getElementById("create-post-editor_ifr");
+        let tinymceIframe = document.getElementById("redact-account-html-editor_ifr");
 
         let frameDocument = getFrameDocument(tinymceIframe);
 
         let contentBlock = frameDocument.getElementById("tinymce");
 
-        contentBlock.classList.add('create-post-input-block');
+        contentBlock.classList.add('redact-account-html-editor-input-block');
 
     }, 1000);
 }

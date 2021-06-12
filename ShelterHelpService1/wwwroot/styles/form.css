@@ -117,10 +117,8 @@
         text-decoration: underline;
     }
 
-    .form .one-line {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .form input {
+        width: 80%;
     }
 
     .form .interactive-button {
@@ -130,3 +128,10 @@
     .form .link {
         text-decoration: underline;
     }
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: #593a2e; /* Цвет линии */
+    color: #593a2e; /* Цвет линии для IE6-7 */
+    height: 1px; /* Толщина линии */
+}

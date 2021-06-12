@@ -33,7 +33,7 @@ class PostBlock extends React.Component {
 
                     <h1>{timelinePost.title}</h1>
 
-                    <h6 className="author">автор: <a href={"Content/User/" + authorName}>{authorName}</a></h6>
+                    <h6 className="author">автор: <a href={"/Content/User/" + authorName}>{authorName}</a></h6>
 
                 </div>
 

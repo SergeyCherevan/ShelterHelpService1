@@ -33,14 +33,20 @@ namespace ShelterHelpService1.Controllers
         public async Task<IActionResult> RedactAccount()
         {
 
-            ViewBag.AvatarName = (await _manager.FindByNameAsync(User.Identity.Name)).Image;
+            User user = (await _manager.GetUserAsync(HttpContext.User)).GetUser();
 
-            User curUser = (await _manager.GetUserAsync(HttpContext.User)).GetUser();
+            ViewBag.AvatarName = user.Image;
+            ViewBag.UserCategory = user.Category;
+
 
             return View(new RedactAccountViewModel
             { 
-                Email = (curUser.LoginStructure as EmailLoginStructure).RegistrationEmail,
-                PublicEmail = curUser.PublicEmail,
+                Email = (user.LoginStructure as EmailLoginStructure).RegistrationEmail,
+                FirstName = (user as SimpleUser)?.FirstName,
+                LastName = (user as SimpleUser)?.LastName,
+                FullName = (user as Shelter)?.FullName,
+                PublicEmail = user.PublicEmail,
+                HtmlPage = user.HtmlPage,
             });
         }
 
@@ -48,15 +54,15 @@ namespace ShelterHelpService1.Controllers
         public async Task<IActionResult> RedactAccount(RedactAccountViewModel model)
         {
 
-            UserEntity user; IdentityResult result;
+            IdentityResult result;
+            UserEntity user = await _manager.GetUserAsync(HttpContext.User);
 
             ViewBag.RedactResult = "";
-            ViewBag.AvatarName = (await _manager.FindByNameAsync(User.Identity.Name)).Image;
+            ViewBag.AvatarName = user.Image;
+            ViewBag.UserCategory = user.Category;
 
             if (ModelState.IsValid)
             {
-                user = await _manager.FindByNameAsync(User.Identity.Name);
-
                 var  isPasswordRight = await _manager.CheckPasswordAsync(user, model.Password);
 
                 if (!isPasswordRight)
@@ -96,11 +102,12 @@ namespace ShelterHelpService1.Controllers
                     }
                 }
 
-
-
-
                 user.Email = model.Email;
-                user.PublicEmail = model.PublicEmail;                
+
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.PublicEmail = model.PublicEmail;
+                user.HtmlPage = model.HtmlPage;
 
                 result = await _manager.UpdateAsync(user);
 

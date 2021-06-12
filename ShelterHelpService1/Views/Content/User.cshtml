@@ -1,0 +1,70 @@
+﻿
+@using ShelterHelpService1.Models
+@using ShelterHelpService1.Models.ViewModels
+
+@model ContentUserViewModel
+
+<h1 id="Registration">@(Model.UserName)</h1>
+
+@*Если убрать enctype="multipart/form-data", то файл загружаться не будет!*@
+
+<div class="form">
+
+    <div class="columns">
+
+        <div class="left-block">
+
+            <div class="avatar-with-button">
+
+                <img src="~/users-images/@(Model.Image ?? "default-avatar.png")" class="img-on-form" alt="Невозможно найти аватар">
+
+            </div>
+
+        </div>
+
+        <div class="right-block">
+
+            @if (Model.Category == UserCategoryEnum.SimpleUser)
+            {
+                <label>Имя</label><br>
+                <b>@Model.FirstName</b><br><br>
+
+                <label>Фамилия</label><br>
+                <b>@Model.LastName</b><br><br>
+            }
+            else if (ViewBag.UserCategory == UserCategoryEnum.Shelter)
+            {
+                <label>Полное название организации</label><br>
+                <b>@Model.FullName</b><br><br>
+            }
+
+            <label>Публичный Email</label><br>
+            <b>@Model.PublicEmail</b><br><br>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="one-column-section">
+
+    <hr /><br>
+
+
+
+    <div id="html-page-content">
+        @Html.Raw(Model.HtmlPage)
+    </div>
+
+</div>
+
+@section AdditionalScripts
+{
+    <script src="~/scripts/avatar-input.js" asp-append-version="true"></script>
+
+    <script src="https://cdn.tiny.cloud/1/6r5jxea1fjw8vfekjee9pquejayu22ec5og54oj34s9x6pcu/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+
+    <script src="~/scripts/redact-account-html.js" asp-append-version="true"></script>
+}

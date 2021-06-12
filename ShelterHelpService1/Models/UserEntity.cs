@@ -78,4 +78,9 @@ namespace ShelterHelpService1.Models
     }
 
     public enum UserCategoryEnum { SimpleUser, Shelter }
+
+    public class ListOfUserCategories
+    {
+        public List<string> list = new List<string> { "Обычный пользователь", "Приют" };
+    }
 }

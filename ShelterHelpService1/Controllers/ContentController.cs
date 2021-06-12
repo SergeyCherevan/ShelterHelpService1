@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using ShelterHelpService1.Models;
+using ShelterHelpService1.Models.ViewModels;
 
 namespace ShelterHelpService1.Controllers
 {
@@ -14,9 +15,12 @@ namespace ShelterHelpService1.Controllers
     {
         private readonly ShelterHelpServiceContext _context;
 
+        private readonly UserManager<UserEntity> _manager;
+
         public ContentController(ShelterHelpServiceContext context, UserManager<UserEntity> manager)
         {
             _context = context;
+            _manager = manager;
         }
 
         public async Task<IActionResult> TimelinePosts()
@@ -26,25 +30,19 @@ namespace ShelterHelpService1.Controllers
                 .ToListAsync();
 
             var result = from e in timelinePostTable
-                         select (object) new
-                         {
-                             id = e.Id,
-                             authorName = e.Author.UserName,
-                             title = e.Title,
-                             category = e.Category,
-                             datePublicating = e.DatePublicating,
-                             isActual = e.IsActual,
-                             htmlPage = e.HtmlPage,
-                             rating = e.Rating,
-                             xmlComments = e.XmlComments,
-                         };
+                         select (object) new ContentPostViewModel(e);
 
             return Json(result);
         }
 
         public async Task<IActionResult> User(string param1)
         {
-            return Json(param1);
+            return View(new ContentUserViewModel(await _manager.FindByNameAsync(param1)));
+        }
+
+        public async Task<IActionResult> Post(string param1)
+        {
+            return View(new ContentPostViewModel(await _context.TimelinePostTable.FindAsync(param1)));
         }
     }
 }
