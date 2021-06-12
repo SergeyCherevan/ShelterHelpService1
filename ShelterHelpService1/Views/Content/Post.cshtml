@@ -1,1 +1,50 @@
 ﻿
+@using ShelterHelpService1.Models
+@using ShelterHelpService1.Models.ViewModels
+
+@model ContentPostViewModel
+
+@inject ListOfTimelinePostCategories Categories
+
+<h1>@(Model.Title)</h1>
+
+<div class="post-page">
+
+    <div class="post-page-anderheader1">
+
+        <h5 class="id">id: <span class="value">@Model.Id</span></h5>
+
+        <h5 class="author">автор: <a href=@("/Content/User/" + Model.AuthorName)>@(Model.AuthorName)</a></h5>
+
+    </div>
+
+
+
+    <div class="post-page-anderheader2">
+
+        <div class="right-part">
+
+            <h5 class="category">@(Categories.list[(int)Model.Category])</h5>
+
+            <h5>
+                @(Model.DatePublicating.ToString("g"))
+            </h5>
+
+            <h5 class=@("is-actual-" + Model.IsActual.ToString().ToLower())>@(Model.IsActual ? "" : "не") актуально</h5>
+
+        </div>
+
+
+
+        <div class="left-part">@Model.Rating <span class="star">★</span></div>
+
+
+    </div>
+
+
+
+    <div class="post-page-content">
+        @Html.Raw(Model.HtmlPage)
+    </div>
+
+</div>

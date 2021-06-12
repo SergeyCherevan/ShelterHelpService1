@@ -42,7 +42,11 @@ namespace ShelterHelpService1.Controllers
 
         public async Task<IActionResult> Post(string param1)
         {
-            return View(new ContentPostViewModel(await _context.TimelinePostTable.FindAsync(param1)));
+            return View(new ContentPostViewModel(
+                await _context.TimelinePostTable
+                    .Include(e => e.Author)
+                    .FirstAsync(e => e.Id == param1)
+            ));
         }
     }
 }

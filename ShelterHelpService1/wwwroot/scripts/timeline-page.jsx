@@ -1,6 +1,6 @@
 ﻿
 /* Данный скрипт определяет отрисовку главной страницы - Ленты событий,
- * которая отображается по адрессу: /Home/Index */
+ * которая отображается по адрессу: /Home/TimelinePage */
 
 
 
@@ -74,10 +74,14 @@ class PostBlock extends React.Component {
 
                 <div className="post-block-footer">
 
-                    <button className="interactive-button" id={"see-on-page-button-" + timelinePost.id}>Смотреть на странице</button>
+                    <button className="interactive-button" id={"see-on-page-button-" + timelinePost.id}
+                        onClick={ () => { document.location.href = "/Content/Post/" + timelinePost.id } }>
+
+                        Смотреть на странице
+                    </button>
 
                     <img className="arrow-down" id={"see-more-" + timelinePost.id}
-                        src="/images/arrow-down.png"></img>
+                        src="/images/arrow-down.png" />
 
                     <button className="interactive-button" id={"comment-button-" + timelinePost.id}>
                         { window.isAuthenticated ? "Комментировать" : "Комментарии" }                            

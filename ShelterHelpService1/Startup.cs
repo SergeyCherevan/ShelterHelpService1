@@ -62,6 +62,7 @@ namespace ShelterHelpService1
                 .AddChakraCore();
 
             services.AddScoped<ListOfTimelinePostCategories>();
+            services.AddScoped<ListOfUserCategories>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

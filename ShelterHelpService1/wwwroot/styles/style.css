@@ -2,8 +2,6 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic);
 
-/* @import url(https://fonts.googleapis.com/css?family=Quicksand:600&display=swap); */
-
 /* Our styles */
 
 @import 'general-styles.css';
@@ -21,6 +19,8 @@
 @import 'footer.css';
 
 @import 'form.css';
+
+@import 'post-page.css';
 
 @import 'create-post.css';
 

@@ -24,7 +24,7 @@
 
         @foreach (TimelinePostEnum e in Enum.GetValues<TimelinePostEnum>())
         {
-            <option value="@((int)e)">@Categories.list[(int)e]</option>
+            <option value="@((int)e)">@(Categories.list[(int)e])</option>
         }
 
     </select><br>
