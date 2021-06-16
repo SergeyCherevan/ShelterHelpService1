@@ -74,6 +74,7 @@ class PostBlock extends React.Component {
                         src="/images/arrow-down.png" />
 
                     <button className="interactive-button" id={"comment-button-" + timelinePost.id}>
+                        
                         { window.isAuthenticated ? "Комментировать" : "Комментарии" }                            
                     </button>
 
@@ -143,7 +144,7 @@ function showTimeLinePosts(jsonResponceText) {
                 }}>
                 </PostBlock>
 
-                <CommentsBlock xmlComments={postData.xmlComments}></CommentsBlock>
+                <CommentsBlock id={postData.id} xmlComments={postData.xmlComments}></CommentsBlock>
             </>,
             newPost
         );
@@ -175,7 +176,41 @@ function showTimeLinePosts(jsonResponceText) {
             seeMore.removeEventListener('click', clickSeeCompact);
             seeMore.addEventListener('click', clickSeeMore);
         }
+
+
+
+        let showHideComments = document.getElementById("comment-button-" + postData.id);
+        showHideComments.addEventListener('click', ShowComments);
+
+        function ShowComments() {
+
+            let showHideComments = document.getElementById("comment-button-" + postData.id);
+            let commentsBlock = document.getElementById("comments-block-" + postData.id);
+
+            UnblockAndShow(commentsBlock);
+
+            showHideComments.removeEventListener('click', ShowComments);
+            showHideComments.addEventListener('click', HideComments);
+
+            showHideComments.oldName = showHideComments.innerHTML;
+            showHideComments.innerHTML = "Скрыть комментарии";
+        }
+
+        function HideComments() {
+
+            let showHideComments = document.getElementById("comment-button-" + postData.id);
+            let commentsBlock = document.getElementById("comments-block-" + postData.id);
+
+            HideAndBlock(commentsBlock);
+
+            showHideComments.removeEventListener('click', HideComments);
+            showHideComments.addEventListener('click', ShowComments);
+
+            showHideComments.innerHTML = showHideComments.oldName;
+        }
     }
+
+
 
     document.body.style.cursor = 'default';
 }

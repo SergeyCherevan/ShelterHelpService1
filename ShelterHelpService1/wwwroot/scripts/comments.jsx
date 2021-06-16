@@ -30,7 +30,17 @@ class CommentsBlock extends React.Component {
 
                         <div className="content-part">
 
-                            {comment.getElementsByTagName('Content')[0].textContent}
+                        {
+                            comment.getAttribute("Category") === "content" ?
+                                <p style={{ display: "inline-block" }}>{comment.getElementsByTagName('Content')[0].textContent}</p> :
+                                <h2 style={{
+display: "inline-block",
+
+background: `linear-gradient( to right, #eaa221, #eaa221 ${comment.getAttribute("Rating") * 10}%, #888 ${comment.getAttribute("Rating") * 10}%, #888 100%)`,
+WebkitBackgroundClip: 'text',
+WebkitTextFillColor: 'transparent'
+                                }}>★★★★★</h2>
+                        }
 
                         </div>
 
@@ -38,7 +48,7 @@ class CommentsBlock extends React.Component {
                 </>;
         }
 
-        let returnBlock = React.createElement('div', { className: "comments-block" }, innerXml);
+        let returnBlock = React.createElement('div', { id: "comments-block-" + this.props.id, className: "comments-block" }, innerXml);
 
         return returnBlock;
     }

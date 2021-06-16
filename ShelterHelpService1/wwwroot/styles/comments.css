@@ -8,7 +8,24 @@
     overflow: hidden;
 
     position: relative;
+
+    display: none;
+    transition: .6s;
 }
+
+    .comments-block.unvisible {
+        
+        display: block;
+
+        opacity: 0;
+    }
+
+    .comments-block.visible {
+        
+        display: block;
+
+        opacity: 1;
+    }
 
 .one-comment-block {
     
@@ -47,6 +64,9 @@
         
         height: auto;
         flex-grow: 1;
+
+        display: flex;
+        vertical-align: central;
 
         padding: .5vw;
     }
