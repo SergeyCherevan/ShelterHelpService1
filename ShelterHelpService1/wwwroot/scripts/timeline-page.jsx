@@ -2,20 +2,10 @@
 /* Данный скрипт определяет отрисовку главной страницы - Ленты событий,
  * которая отображается по адрессу: /Home/TimelinePage */
 
-
-
-// Создание заголовка сраницы
-
-{
-    ReactDOM.render(
-        <h1>Лента событий</h1>,
-        document.getElementsByClassName("main-right-column")[0]
-    );
-}
-
 // Класс новостного блока
 
 class PostBlock extends React.Component {
+
     render() {
 
         let timelinePost = this.props.timelinePostData;
@@ -137,8 +127,8 @@ function showTimeLinePosts(jsonResponceText) {
         newPost.id = "post-block-" + postData.id;
 
         ReactDOM.render(
-            <PostBlock
-
+            <>
+                <PostBlock
                 timelinePostData={{
 
                     id: postData.id,
@@ -149,10 +139,12 @@ function showTimeLinePosts(jsonResponceText) {
                     isActual: postData.isActual,
                     htmlPage: postData.htmlPage,
                     rating: postData.rating,
-                    xmlComments: postData.xmlComments,
 
                 }}>
-            </PostBlock>,
+                </PostBlock>
+
+                <CommentsBlock xmlComments={postData.xmlComments}></CommentsBlock>
+            </>,
             newPost
         );
 

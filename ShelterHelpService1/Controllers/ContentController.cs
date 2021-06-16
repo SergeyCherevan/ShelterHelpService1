@@ -30,7 +30,7 @@ namespace ShelterHelpService1.Controllers
                 .ToListAsync();
 
             var result = from e in timelinePostTable
-                         select (object) new ContentPostViewModel(e);
+                         select (object) new ContentPostViewModel(e, _manager);
 
             return Json(result);
         }
@@ -46,7 +46,7 @@ namespace ShelterHelpService1.Controllers
                 await _context.TimelinePostTable
                     .Include(e => e.Author)
                     .FirstAsync(e => e.Id == param1)
-            ));
+            , _manager));
         }
     }
 }

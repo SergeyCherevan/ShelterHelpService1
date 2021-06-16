@@ -7,19 +7,19 @@
 
         <ul class="footer-menu-list">
             <li>
-                @CompanyInfo.Addresses[0]
+                @Html.Raw(CompanyInfo.Addresses[0])
                 <a href="#" title="Мы на карте"><img src="~/images/link.png" class="link-icon" /></a>
             </li>
             <li>
-                @CompanyInfo.Addresses[1]
+                @Html.Raw(CompanyInfo.Addresses[1])
                 <a href="#" title="Мы на карте"><img src="~/images/link.png" class="link-icon" /></a>
             </li>
             <li>
-                @CompanyInfo.Addresses[2]
+                @Html.Raw(CompanyInfo.Addresses[2])
                 <a href="#" title="Мы на карте"><img src="~/images/link.png" class="link-icon" /></a>
             </li>
         </ul>
     </div>
 
-    <a class="logo" id="logo-in-footer" href="/">@CompanyInfo.Name</a>
+    <a class="logo" id="logo-in-footer" href="/">@Html.Raw(CompanyInfo.Name)</a>
 </footer>
